@@ -5,6 +5,11 @@ export default [
     component: require('@/views/home/index').default,
   },
   {
+    name: 'Category',
+    path: '/category/:cid',
+    component: require('@/views/home/index').default,
+  },
+  {
     name: 'Login',
     path: '/login',
     component: require('@/views/login/login').default,
