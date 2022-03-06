@@ -32,14 +32,16 @@
       <div class="section2">
         <h1 class="font_blue"
             style="background-color: #e9e9e9;text-align: center;">How do i earn rewards?</h1>
-        <h3 class="font_blue">2.5% cash back on every trade</h3>
-        <h5> Rewards are based on the value of your trade and paid out in cprx twice a week.</h5>
-        <h3 class="font_blue">2.5% cash back on every trade</h3>
-        <h5> Rewards are based on the value of your trade and paid out in cprx twice a week.</h5>
-        <h3 class="font_blue">2.5% cash back on every trade</h3>
-        <h5> Rewards are based on the value of your trade and paid out in cprx twice a week.</h5>
-        <h3 class="font_blue">2.5% cash back on every trade</h3>
-        <h5> Rewards are based on the value of your trade and paid out in cprx twice a week.</h5>
+        <h3 class="font_blue">How do I earn $100 READ rewards?</h3>
+        <h5> 25% token back on registration completed.</h5>
+        <h5> 75% token back on wallet connection completed.</h5>
+        <h3 class="font_blue">How do I earn extra profit?</h3>
+        <h5> You will get an extra 20% profit when your invited friends get $READ. This does not affect your friend's income.</h5>
+        <h5>More than that. If your friend invites a new user, You'll get an extra 10% profit when your friend's friend reads.</h5>
+        <h3 class="font_blue">Can I unlock achievements by inviting friends?</h3>
+        <h5> Inviting friends is an important task line that is the ultimate qualification for the NFT bonus.</h5>
+        <h3 class="font_blue">What if my friend forgets to fill in the invitation code when signs up?</h3>
+        <h5> Don't worry, just remind him to fill in the invitation code in the personal center and then you will get the reward.</h5>
       </div>
     </div>
   </div>
