@@ -13,6 +13,7 @@ import { initWorkspace } from "@/composables";
 
 
 const network = WalletAdapterNetwork.Devnet;
+
 const wallets = [
   new PhantomWalletAdapter(),
   new SlopeWalletAdapter(),
@@ -26,16 +27,12 @@ initWallet({ wallets, autoConnect: false });
 initWorkspace();
 
 
-
 import { WalletMultiButton, useWallet } from 'solana-wallets-vue'
 const { connected } = useWallet()
-console.log(connected)
+console.log("wallet connected", connected)
 </script>
 
 <template>
-  <aside class="flex flex-col items-center md:items-stretch space-y-2 md:space-y-4">
-    <div class="fixed bottom-8 right-8 md:static w-48 md:w-full">
-      <wallet-multi-button></wallet-multi-button>
-    </div>
-  </aside>
+  <wallet-multi-button></wallet-multi-button>
+
 </template>

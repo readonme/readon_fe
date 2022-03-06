@@ -1,14 +1,49 @@
+import cache from '@/utils/cache.js'
+const VUE_APP_TOKEN_NAME = "READTOKEN";
+const VUE_APP_WALLET_NAME = "READWALLET";
 
-// 1，获取localStorage方法
-export function getToken (key) {
-  return window.localStorage.getItem(key)
+function setToken (value) {
+  cache.set(VUE_APP_TOKEN_NAME, value, 3600 * 2000)
 }
-// 2，设置localStorage方法
-export function setToken (key, token) {
-  window.localStorage.setItem(key, token)
+
+function getToken () {
+  return cache.get(VUE_APP_TOKEN_NAME)
 }
-// 3，清除localStorage方法
-export function removeToken (key) {
-  window.localStorage.removeItem(key)
+
+function setWallet (value) {
+  cache.set(VUE_APP_WALLET_NAME, value, 3600 * 2000)
 }
+
+function getWallet () {
+  return cache.get(VUE_APP_WALLET_NAME)
+}
+
+function checkLogin () {
+  if (cache.get(VUE_APP_TOKEN_NAME)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkWallet () {
+  if (cache.get(VUE_APP_WALLET_NAME)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+export default {
+  VUE_APP_TOKEN_NAME,
+  VUE_APP_WALLET_NAME,
+  checkLogin,
+  checkWallet,
+  setToken,
+  getToken,
+  setWallet,
+  getWallet
+}
+
 

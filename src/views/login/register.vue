@@ -4,8 +4,9 @@
     <div class="login"
          v-show="registertip">
       <div class="login-wrap">
-        <img src="@/assets/img/logo_3.png"
-             class="logoimg" />
+        <!--<img src="@/assets/img/logo_3.png"
+             class="logoimg" />-->
+        <h1>Register</h1>
         <el-form :model="ruleForm"
                  status-icon
                  :rules="rules"
@@ -28,6 +29,11 @@
                       placeholder="Confirm Password"></el-input>
           </el-form-item>
 
+          <el-form-item prop="checkCode">
+            <el-input class="forminput"
+                      v-model="ruleForm.invitation"
+                      placeholder="Invite Code"></el-input>
+          </el-form-item>
           <el-form-item>
             <el-button type="primary"
                        @click="signup()">Sign up</el-button>
@@ -38,28 +44,6 @@
           <span>Already a member？</span>
           <router-link to="/login"><span style="color: rgba(58, 103, 215, 1)">Login in</span></router-link>
         </div>
-      </div>
-    </div>
-
-    <!-- input invite code-->
-    <div class="login"
-         v-show="codetip">
-      <div class="login-wrap">
-        <h1 style="color: #3a67d7">Have a code?</h1>
-        <el-input v-model="invitecode"
-                  class="forminput"
-                  placeholder="CODE"></el-input>
-        <p class="codetip">
-          If you have a promo code or referral code from a friend, enter it
-          here.
-        </p>
-
-        <div class="btns">
-          <el-button type="primary"
-                     @click="next()">Continue</el-button>
-        </div>
-        <el-button class="skipbtn"
-                   @click="skip()">Skip</el-button>
       </div>
     </div>
 
@@ -82,15 +66,14 @@
 <script >
 import { ElNotification } from 'element-plus'
 import { h } from 'vue'
-
-import { setToken } from "@/utils/token.js";
+import TOKEN from "@/utils/token.js";
 import { createHash } from "@/utils/common_tools.js";
-import { register, bindParent } from "@/api/login";
+import { register } from "@/api/login";
 export default {
   data () {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请输入密码"));
+        callback(new Error("Please input password"));
       } else {
         if (this.ruleForm.checkPass !== "") {
           this.$refs.ruleForm.validateField("checkPass");
@@ -100,26 +83,32 @@ export default {
     };
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请再次输入密码"));
+        callback(new Error("Please input password again"));
       } else if (value !== this.ruleForm.password) {
-        callback(new Error("两次输入密码不一致!"));
+        callback(new Error("The two passwords you entered were inconsistent!"));
       } else {
         callback();
       }
     };
     return {
       ruleForm: {
-        password: "",
-        checkPass: "",
-        email: "",
+        password: "123",
+        checkPass: "123",
+        email: "admin@read.com",
+        invitation: "VA4AX62IL0"
       },
-      invitecode: "",
+
       codetip: false,
       successtip: false,
       registertip: true,
       rules: {
         pass: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }],
+        checkCode: [{
+          required: true,
+          message: "Invitation code is required for the beta phase",
+          trigger: ["blur", "change"]
+        }],
         email: [
           {
             required: true,
@@ -136,53 +125,37 @@ export default {
     };
   },
   created () {
-    this.invitecode = this.$route.params.invitecode
+    console.log("VUE_APP_TOKEN_NAME", TOKEN.VUE_APP_TOKEN_NAME)
+    this.ruleForm.invitation = this.$route.params.invitecode
   },
-
   methods: {
     resetForm (formName) {
       this.$refs[formName].resetFields();
     },
-
-    async next () {
-      //绑定邀请码
-      if (this.invitecode == "") {
-        return;
-      }
-      let res = await bindParent({ "invite_code": this.invitecode });
-      console.log(res);
-      if (res.status == 200 && res.data) {
-        this.registertip = false;
-        this.codetip = false;
-        this.successtip = true;
-      }
-    },
-    skip () {
-      this.registertip = false;
-      this.codetip = false;
-      this.successtip = true;
-    },
     async signup () {
       let datas = this.ruleForm;
-      datas["name"] = "baca_" + createHash(8)
+      datas["name"] = "u_" + createHash(8)
+      console.log(datas)
       let res = await register(datas);
-      if (res.status == 200 && res.data && res.data.code == 200 && res.data.token) {
-        setToken("bacaToken", res.data.token);
-        this.codetip = true;
-        this.registertip = false;
-        this.successtip = false;
-      } else {
-        var mes = res.data.message;
-        var options = {
-          title: "Aha ~",
-          message: h("i", { style: "color: teal;font-weight:700" }, mes),
-          duration: 2000
-        };
-        ElNotification(options);
+      console.log(res)
+      if (res.status == 200 && res.data) {
+        if (res.data.code == 200 && res.data.token) {
+          TOKEN.setToken(TOKEN.VUE_APP_TOKEN_NAME, res.data.token);
+          this.registertip = false;
+          this.successtip = true;
+        } else {
+          var mes = res.data.message;
+          var options = {
+            title: "emmm ~",
+            message: h("i", { style: "color: teal;font-weight:700" }, mes),
+            duration: 2000
+          };
+          ElNotification(options);
+        }
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style  scoped>

@@ -1,46 +1,29 @@
 <template>
   <div>
     <!-- footer area start -->
-    <footer class="footer-area">
-      <div class="container">
-        <div style="padding: 1em 0;">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 offset-xl-3 offset-lg-3 offset-md-3 offset-sm-3"
-                 style="text-align:center;margin:0 auto">
-              <div class="widget widget_about"
-                   style="margin-bottom: 0px;">
-                <div class="logo">
-                  <img src="@/assets/img/logo-2.png"
-                       alt="img"
-                       style="width: 30%;">
-                </div>
-                <p class="text-white mt-3 mb-3">To bring the old and classic "reading" back to our life and to distribute high-quality, genuine and valuable thoughts to the world.</p>
-                <ul class="social-area social-area-2">
-                  <li><a href="#"><i class="fa fa-facebook"
-                         target="_blank"></i></a></li>
-                  <li><a href="https://twitter.com/BacaWeb3"
-                       target="_blank"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa fa-linkedin"
-                         target="_blank"></i></a></li>
-                  <li><a href="#"><i class="fa fa-pinterest"
-                         target="_blank"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+    <div class="footer">
+      <div class="foot-main">
+        <p> Make you addicted to Reading like a Game.</p>
+        <div class="box">
+          <a href="https://twitter.com/ReadOnMe3"
+             target="_blank"> <img class="b-title"
+                 src="@/assets/img/footer/twitter.png"></a>
+          <a href="https://discord.gg/NCZG4nvrYT"
+             target="_blank"> <img class="b-title"
+                 src="@/assets/img/footer/discord.png"></a>
+          <img class="b-title"
+               src="@/assets/img/footer/telegram.png">
+          <img class="b-title"
+               src="@/assets/img/footer/medium.png">
         </div>
+
+        <div class="line_02"></div>
+        <p>Copyright 2022. All Right Reserved</p>
       </div>
-      <div class="copyright-area"
-           style="padding: 5px 0 5px">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-12 text-center">
-              <p>Copyright 2022. All Right Reserved</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+      <img class="foot-shadow"
+           src="@/assets/img/footer/shadow.png">
+    </div>
+
     <!-- footer area end -->
 
     <!-- back to top area start -->
@@ -68,4 +51,85 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/*footer */
+.footer {
+  margin: 0 auto;
+  width: 85%;
+  padding: 2em;
+}
+.foot-main > p {
+  margin: 0 auto;
+  text-align: center;
+  width: 75%;
+  font-size: 1.2em;
+  padding: 1em;
+}
+
+.foot-main {
+  background-color: rgba(1, 237, 255, 1);
+  border: 1px solid;
+  border-radius: 20px;
+}
+.foot-shadow {
+  width: 100%;
+  margin-top: -8px;
+}
+.foot-shadow1 {
+  margin-top: 0em;
+  border-top: 50px solid #5a5756;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  background-image: linear-gradient(#e66465, #9198e5);
+}
+
+.box {
+  display: flex;
+  margin: 1em auto;
+  width: 40%;
+}
+
+.b-title {
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-right: 3em;
+}
+
+.line_02 {
+  width: 70%;
+  margin: 0 auto;
+  height: 1px;
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    margin: 0 auto;
+    width: 95%;
+    padding: 0;
+  }
+  .box {
+    display: flex;
+    width: 55%;
+  }
+  .b-title {
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-right: 1em;
+  }
+  .b-title :nth-last-child(3) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 850px) {
+  .box {
+    display: flex;
+    width: 66%;
+  }
+}
 </style>

@@ -26,8 +26,10 @@
     "solana-wallets-vue": "^0.3.1",
     "tailwindcss": "^2.2.19",
     "vue": "^3.2.13",
+    "vue-ellipse-progress": "^2.1.0",
     "vue-route": "^1.5.1",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vue-social-sharing": "^4.0.0-alpha4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

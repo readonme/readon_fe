@@ -20,7 +20,8 @@
             <div class="single-post-wrap">
               <div class="thumb">
                 <img :src="item.coverImg"
-                     alt="img" />
+                     alt="img"
+                     class="voteimg" />
                 <a class="tag top-right tag-sky top_title"
                    href="#">{{
                   item.cate.title
@@ -69,7 +70,8 @@
                     justify-content: center;
                   ">
                   <img :src="item.coverImg"
-                       alt="img" />
+                       alt="img"
+                       style="max-height: 11em;" />
                 </div>
                 <div class="media-body"
                      style="margin-top: 2px">
@@ -84,23 +86,18 @@
                   <a :href="'#/detail/' + item.id"
                      target="_blank">
                     <h6 class="story_title">{{ item.title }}</h6>
-                    <p v-html="item.content"
-                       class="story_content"></p>
+                    <p class="story_content">{{ item.short_content }}</p>
                   </a>
                   <div class="news_botton">
                     <a class="tag tag-red"
-                       href="#">{{item.cate.title}} </a>
-                    <div>
-                      <img src="@/assets/img/vote.png"
-                           alt="img"
-                           style="width: 1.5em" />
-                      {{ item.vote }}
-                    </div>
+                       href="#">{{ item.cate.title }} </a>
+
                   </div>
                 </div>
               </div>
               <div class="btn-wrap mt-5 mb-5 text-center">
-                <a class="btn btn-main">{{ loadMsg }}</a>
+                <a class="btn btn-main"
+                   style="color: rgba(1, 237, 255, 1);">{{ loadMsg }}</a>
               </div>
             </div>
           </div>
@@ -114,9 +111,9 @@
                 <div class="thumb"><img :src="item.memo.img"
                        alt="img" /></div>
                 <a :href="'#/category/' + item.id"
-                   target="_blank">{{
-                  item.title
-                }}</a>
+                   target="_blank">
+                  {{item.title}}
+                </a>
               </li>
             </ul>
           </div>
@@ -147,7 +144,7 @@ export default {
     this.cateObjList = cateRes.data.data;
     let articleRes = await articleTopVoteList(params);
     this.toparticles = articleRes.data.data.slice(0, 4);
-    console.log("this.toparticles", articleRes)
+    //console.log("this.toparticles", articleRes)
     let articleRes2 = await articleList(params);
     //this.articles = articleRes2.data.data;
   },
@@ -170,11 +167,11 @@ export default {
       try {
         console.log("load more", this.page);
         this.loading = true;
-        let articleRes2 = await articleTopVoteList({ "page": this.page, "cid": this.cid });
+        let articleRes2 = await articleList({ "page": this.page, "cid": this.cid });
+
         if (articleRes2.data && articleRes2.data.code == 0) {
-          let tmp = articleRes2.data.data;
+          let tmp = articleRes2.data.data.items;
           this.articles = this.articles.concat(tmp);
-          console.log("this.articles", this.articles)
           this.page += 1;
           if (tmp.length < 10) {
             this.loading = true;
@@ -230,6 +227,9 @@ export default {
   margin-right: 3em;
 }
 
+.voteimg {
+  height: 10em;
+}
 @media (min-width: 600px) {
   .news_botton a {
     float: left;

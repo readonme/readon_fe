@@ -2,8 +2,9 @@
   <div class="loginbody pd-top-50 pd-bottom-50">
     <div class="login">
       <div class="login-wrap">
-        <img src="@/assets/img/logo_3.png"
-             class="logoimg" />
+        <!--<img src="@/assets/img/logo_3.png"
+             class="logoimg" />-->
+        <h1>Login</h1>
         <el-form :model="loginForm"
                  status-icon
                  ref="loginForm">
@@ -52,7 +53,7 @@
 
 
 <script>
-import { setToken } from "@/utils/token.js";
+import TOKEN from "@/utils/token.js";
 import { login } from "@/api/login";
 export default {
   data () {
@@ -71,7 +72,7 @@ export default {
       let datas = this.loginForm;
       let res = await login(datas);
       if (res.status == 200 && res.data && res.data.code == 200 && res.data.token) {
-        setToken("bacaToken", res.data.token)
+        TOKEN.setToken(res.data.token)
         if (this.$route.path == "/login") {
           this.$router.push("/");
         } else {
