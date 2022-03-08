@@ -27,7 +27,7 @@
     </div>
 
     <!--info-->
-    <div style="background-color: #e9e9e9;margin-top: 2em;">
+    <div style="background-color: #e9e9e9;margin: 2em 0 ;">
       <div class="section2">
         <h1 class="font_blue"
             style="background-color: #e9e9e9;">To complete the referral process, download the BACA APP on your monile device by tapping the link above. Then:</h1>
@@ -39,7 +39,7 @@
     </div>
 
     <!--footer-->
-    <div style="background-color: #719afe">
+    <div style="background-color: #719afe;margin: 2em 0 ;">
       <div class="section2">
         <h3 style="color:#ffffff"> This offer is for new customers only. If you already hava an account, please take advantage of our increased rewards though January 14th, 2021.</h3>
       </div>
@@ -106,5 +106,25 @@ h5 {
 
 .section2 h3 {
   line-height: 1.8;
+}
+
+@media only screen and (max-width: 600px) {
+  .section1,
+  .section2 {
+    width: 60%;
+    width: 90%;
+  }
+  .section1 h1,
+  .section2 h3 {
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+  .share {
+    font-size: 1em;
+    border-radius: 12px;
+  }
 }
 </style>

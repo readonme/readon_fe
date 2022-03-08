@@ -1,0 +1,149 @@
+/* common */
+.top_title {
+  max-height: 3em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.story_title {
+  font-size: 1em !important;
+  max-height: 2em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.story_content {
+  max-height: 5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.meta .date i {
+  color: #7c7577;
+}
+
+.news_botton {
+  margin-top: 1.5em;
+}
+
+.news_botton div {
+  float: right;
+  margin-right: 3em;
+}
+
+.voteimg {
+  height: 10em;
+}
+
+@media (min-width: 600px) {
+  .news_botton a {
+    float: left;
+  }
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.ball-clip-rotate>div {
+  border-radius: 100%;
+  border: 2px solid #333;
+  border-bottom-color: transparent;
+  height: 20px;
+  width: 20px;
+  background: 0 0 !important;
+  display: inline-block;
+  -webkit-animation: rotate 0.75s 0s linear infinite;
+  animation: rotate 0.75s 0s linear infinite;
+}
+
+
+/* dark common */
+.title {
+  color: white;
+  background-color: transparent;
+  font-size: 2.5em;
+}
+
+img {
+  border-radius: 1em;
+}
+
+/* top voted */
+.post-details {
+  background: transparent;
+}
+
+.single-post-wrap {
+  border-radius: 1em;
+  background-color: rgba(37, 37, 37, 1);
+}
+
+.dark-see-all-btn {
+  color: white;
+  background-color: #02edff;
+  font-weight: 900;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+}
+
+/* media list */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: white !important;
+}
+
+.dark-media {
+  padding: 1em;
+  border-radius: 1em;
+  background-color: rgba(37, 37, 37, 1);
+}
+
+.dark-media:hover {
+  background-color: #02edff;
+}
+
+.dark-media:hover>.news_botton>.tag-red {
+  background: black !important;
+}

@@ -6,10 +6,9 @@
           <div class="row">
             <div class="col-sm-8">
               <h4 class="title">Top Voted Stories</h4>
-              <span class="line"></span>
             </div>
             <div class="col-sm-4 text-sm-right align-self-center">
-              <a class="see-all-btn float-sm-end"
+              <a class="see-all-btn float-sm-end dark-see-all-btn"
                  href="#">View all</a>
             </div>
           </div>
@@ -47,7 +46,6 @@
       </div>
     </div>
     <!-- news-area Start -->
-
     <div class="pd-top-50 pd-bottom-30"
          id="articlesFeed">
       <div class="container">
@@ -55,13 +53,12 @@
           <div class="col-lg-8">
             <div class="section-title">
               <h4 class="title">Stories</h4>
-              <span class="line"></span>
             </div>
             <div v-infinite-scroll="loadMore"
                  infinite-scroll-disabled="loading"
                  infinite-scroll-distance="5"
                  class="list">
-              <div class="media-post-wrap-2 media"
+              <div class="media-post-wrap-2 media dark-media"
                    v-for="item in articles">
                 <div class="thumb"
                      style="
@@ -91,7 +88,6 @@
                   <div class="news_botton">
                     <a class="tag tag-red"
                        href="#">{{ item.cate.title }} </a>
-
                   </div>
                 </div>
               </div>
@@ -104,7 +100,6 @@
           <div class="col-lg-4">
             <div class="section-title">
               <h4 class="title">Categories</h4>
-              <span class="line"></span>
             </div>
             <ul class="widget widget-categories">
               <li v-for="item in cateObjList">
@@ -168,7 +163,6 @@ export default {
         console.log("load more", this.page);
         this.loading = true;
         let articleRes2 = await articleList({ "page": this.page, "cid": this.cid });
-
         if (articleRes2.data && articleRes2.data.code == 0) {
           let tmp = articleRes2.data.data.items;
           this.articles = this.articles.concat(tmp);
@@ -188,137 +182,6 @@ export default {
   },
 };
 </script> 
-<style scoped>
-.top_title {
-  max-height: 3em;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.story_title {
-  font-size: 1em !important;
-  max-height: 2em;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.story_content {
-  max-height: 5em;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.meta .date i {
-  color: #7c7577;
-}
-
-.news_botton {
-  margin-top: 1.5em;
-}
-
-.news_botton div {
-  float: right;
-  margin-right: 3em;
-}
-
-.voteimg {
-  height: 10em;
-}
-@media (min-width: 600px) {
-  .news_botton a {
-    float: left;
-  }
-}
-
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-.ball-clip-rotate > div {
-  border-radius: 100%;
-  border: 2px solid #333;
-  border-bottom-color: transparent;
-  height: 20px;
-  width: 20px;
-  background: 0 0 !important;
-  display: inline-block;
-  -webkit-animation: rotate 0.75s 0s linear infinite;
-  animation: rotate 0.75s 0s linear infinite;
-}
+<style scoped src="../../assets/css/dark/home.css">
 </style>
-<style module>
-.box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-}
-.item {
-  display: flex;
-  box-shadow: 0 0 4px #999 inset;
-  height: 50px;
-  line-height: 50px;
-  padding: 10px;
-}
-.super-item {
-  box-shadow: 0 0 10px red inset;
-}
-.item img {
-  width: 50px;
-  height: 50px;
-}
-.item h3 {
-  font-size: 20px;
-  margin-left: 20px;
-}
-.pull-down-dom {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  right: 0;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.load-more-dom {
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-</style>
+ 

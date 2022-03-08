@@ -34,6 +34,11 @@ function checkWallet () {
   }
 }
 
+function logout () {
+  cache.remove(VUE_APP_TOKEN_NAME);
+  cache.remove(VUE_APP_WALLET_NAME);
+}
+
 
 export default {
   VUE_APP_TOKEN_NAME,
@@ -43,7 +48,8 @@ export default {
   setToken,
   getToken,
   setWallet,
-  getWallet
+  getWallet,
+  logout
 }
 
 

@@ -197,7 +197,8 @@ export default {
       let _this = this;
       _this.timer = setInterval(async function () {
         var addr = document.getElementsByClassName("swv-button")[0].getAttribute("title")
-        if (addr !== null && addr.length > 10) {
+        console.log(addr)
+        if (addr !== null && addr.length > 16) {
           console.log(addr)
           var data = { "principal": addr, "type": "SOL" }
           var res = await bindWallet(data)
@@ -208,7 +209,7 @@ export default {
             clearInterval(_this.timer);// 满足条件时 停止计时
           }
         }
-      }, 2000)
+      }, 1000)
     }
 
   }

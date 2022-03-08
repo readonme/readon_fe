@@ -4,8 +4,20 @@
     <span class="overview"
           v-show="!islogin"><a href="/#/login">Log in</a></span>
 
-    <span class="overview"
-          v-show="islogin"><a href="/#/mine"><i class="fa fa-user"></i></a></span>
+    <el-dropdown>
+      <span class="el-dropdown-link info"
+            v-show="islogin">
+        <a href="/#/mine"><i class="fa fa-user"></i></a>
+        <el-icon class="el-icon--right">
+          <arrow-down />
+        </el-icon>
+      </span>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item @click.native="logout()">Logout</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
 
   </div>
 </template>
@@ -22,11 +34,26 @@ export default {
     if (TOKEN.checkLogin()) {
       this.islogin = true
     }
+  },
+  watch: {
+    $route (to, from) {
+      if (TOKEN.checkLogin()) {
+        this.islogin = true
+      }
+    }
+  },
+
+  methods: {
+    logout () {
+      console.log("logout")
+      TOKEN.logout()
+      this.$router.push("/")
+      this.islogin = false
+    }
   }
 }
 
-</script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+</script> 
 <style scoped>
 /* header*/
 .header {
@@ -46,7 +73,16 @@ export default {
   float: right;
   color: white;
   text-align: right;
-  padding-right: 10%;
+  padding-right: 5%;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+/deep/.el-dropdown {
+  float: right;
+  color: white;
+  text-align: right;
+  margin-top: 0.5em;
+  padding-right: 5%;
   font-size: 1.5em;
   font-weight: bold;
 }
@@ -67,6 +103,9 @@ export default {
   .title {
     padding-left: 3%;
     font-size: 2em;
+  }
+  /deep/.el-dropdown {
+    padding-right: 1%;
   }
 }
 </style>

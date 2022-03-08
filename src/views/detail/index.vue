@@ -4,21 +4,21 @@
     <div class="fixed_div">
       <ve-progress :is="component"
                    :progress="progress"
-                   color="#f9a402"
+                   color="#1859ce"
                    empty-color="transparent"
                    :thickness="10"
                    :empty-thickness="1"
-                   lineMode="in 50"
+                   lineMode="in 40"
                    :legend="false"
                    animation="default 1000 100"
                    fontSize="1em">
         <img style="width:5em"
-             :src="require(`@/assets/img/${imgurl}`)" />
+             :src="require(`@/assets/img/detail/${imgurl}`)" />
       </ve-progress>
 
       <img class="icon_jump"
            v-show="bct_jump_show"
-           src="@/assets/img/bct_jump.gif"
+           src="@/assets/img/detail/bct_jump.gif"
            alt="img" />
     </div>
 
@@ -37,33 +37,36 @@
             </div>
             <div class="blog-details-wrap">
               <h3>{{ articleObj.title }}</h3>
-              <p class="subtitle">{{ articleObj.sub_title }}</p>
+              <p class="subtitle">{{ articleObj.subTitle }}</p>
               <div></div>
               <div class="meta">
                 <a href="#"
                    class="author">
-                  <img :src="articleObj.author_head"
+                  <img src="@/assets/img/mine/headimg.png"
                        alt="img"
-                       style="width: 2em" />
+                       style="width: 2em"
+                       onerror="this.src='@/assets/img/mine/headimg.png'" />
                   {{ articleObj.author }}
                 </a>
                 <el-button round
                            type="primary"
                            ref="followuser"
-                           style="padding: 9px 10px; margin-right: 2em"
+                           style="padding: 9px 10px; margin-right: 2em;background: rgba(1,237,255,1);"
                            @click="follow">Follow</el-button>
               </div>
               <div class="meta float-sm-right">
                 <div class="date">
                   <i class="fa fa-clock-o"
                      style="color: #7c7577"></i>
-                  {{ articleObj.created_at }}
+                  {{ articleObj.updatedAt }}
                 </div>
               </div>
               <div class="row">
                 <div v-html="articleObj.content"
-                     class="col-lg-12"></div>
+                     class="col-lg-12 dark-blog"></div>
               </div>
+              <img class="share-shadow"
+                   src="@/assets/img/detail/shadow.png">
               <div class="blog-share-area">
                 <ul class="social-area action">
                   <li>
@@ -75,15 +78,6 @@
                     <i class="fa fa-thumbs-down fa-lg"
                        @click="dislike"></i>
                     {{ articleObj.unlike }}
-                  </li>
-                  <li @click="vote">
-                    <img src="@/assets/img/vote.png"
-                         alt="img"
-                         style="width: 1.5em" />
-                    <el-button round
-                               type="primary"
-                               @click="vote"
-                               class="votebutton">vote</el-button>
                   </li>
                 </ul>
                 <ul class="social-area share">
@@ -100,35 +94,11 @@
                                   :hashtags="sharing.hashtags"
                                   :twitterUser="sharing.twitterUser">
                       <i :class="network.icon"></i>
-
                     </ShareNetwork>
                   </div>
-
                 </ul>
               </div>
-              <el-dialog title="VOTE"
-                         v-model:visible="centerDialogVisible"
-                         width="30%"
-                         center
-                         :destroy-on-close="true"
-                         class="votedialog">
-                <h6 style="text-align: center">How many BAT to stake?</h6>
-                <div style="margin-top: 3em">
-                  <vue-slider v-model="votenum"
-                              :tooltip="'always'"
-                              :max="max"
-                              :min="min" />
-                </div>
-                <h6 style="text-align: center; margin-top: 1.2em; color: #409eff">
-                  Avaliable: {{ balance }}
-                </h6>
-                <span slot="footer"
-                      class="dialog-footer">
-                  <el-button @click="centerDialogVisible = false">取 消</el-button>
-                  <el-button type="primary"
-                             @click="submitTran">确 定</el-button>
-                </span>
-              </el-dialog>
+
             </div>
           </div>
         </div>
@@ -140,9 +110,7 @@
 </template>
 <script>
 import { articleDetail, articleLike, articleDisLike } from "@/api/article.js";
-
 import { getReward } from "@/api/mine.js";
-
 import { ElNotification } from "element-plus";
 import { h } from "vue";
 
@@ -213,7 +181,7 @@ export default {
         this.bct_jump_show = true;
         setTimeout(function () {
           that.bct_jump_show = false;
-        }, 1000);
+        }, 500);
 
         var mesopt = {
           message: "To get reward,please wait a memont......",
@@ -222,7 +190,7 @@ export default {
         Interval.stop(that);
         let res = await getReward();
         console.log(res);
-        if (res.msg == "InsufficientPersonalBudget") {
+        if (res.code == 1) {
           this.imgurl = "bct_c.png";
           var mes = "there are no rewards left";
           var options = {
@@ -243,14 +211,13 @@ export default {
     if (TOKEN.checkLogin()) {
       let lastprogress = Number(CACHE.get("readingProgress"));
       if (!TOKEN.checkWallet()) {
-        var mes = "Please connect wallet first";
+        var mes = "Please connect wallet to get reward first";
         var options = {
           title: "Aha ~",
           message: h("i", { style: "color: teal;font-weight:700" }, mes),
           type: "success",
         };
         ElNotification(options);
-        //return
       }
       if (lastprogress !== undefined || lastprogress != null) {
         this.progress = lastprogress;
@@ -264,7 +231,8 @@ export default {
       art_id: this.$route.params.art_id,
     });
     this.articleObj = res.data.data;
-    console.log(this.articleObj);
+    document.title = this.articleObj["title"] + " ｜ ReadON ";
+    //console.log("************", this.articleObj);
   },
   computed: {
     component () {
@@ -399,110 +367,5 @@ export default {
   },
 };
 </script>
-<style scoped>
-.blog-share-area {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-  border: none !important;
-}
-.social-area {
-  display: inline-block;
-}
-.action {
-  float: left;
-}
-
-.action li {
-  margin-right: 2em !important;
-}
-
-.el-dialog__header {
-  background-color: #409eff;
-  font-weight: bold;
-}
-/deep/.ep-legend--value {
-  height: auto !important;
-}
-.votebutton {
-  margin-left: 0.5em !important;
-  vertical-align: middle !important;
-  padding: 5px 7px !important;
-}
-
-.votedialog .el-dialog {
-  border: 1px solid #94c1e7;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  box-shadow: darkgrey 1px 1px 2px 2px;
-}
-.ep-content {
-  width: 3em;
-}
-.fixed_div {
-  position: fixed;
-  z-index: 10;
-  right: -2em;
-  bottom: 0;
-}
-
-.icon_jump {
-  width: 3em;
-  position: fixed;
-  z-index: 15;
-  right: 2.5em;
-  bottom: 8em;
-}
-
-.meta .date i {
-  color: #7c7577;
-}
-
-@media only screen and (max-width: 700px) {
-  .share {
-    margin: 20px 0 !important;
-    padding: 0;
-  }
-  .share li:first {
-    padding-left: 0;
-  }
-  .share li {
-    margin-right: 10px;
-  }
-  .blog-details-area {
-    padding-bottom: 0;
-  }
-}
-
-.share-network-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1000px;
-  margin: auto;
-}
-a[class^="share-network-"] {
-  flex: none;
-  color: #ffffff;
-  background-color: #333;
-  border-radius: 3px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin: 0 10px 10px 0;
-}
-a[class^="share-network-"] .fah {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  flex: 0 1 auto;
-}
-a[class^="share-network-"] span {
-  padding: 0 10px;
-  flex: 1 1 0%;
-  font-weight: 500;
-}
+<style scoped src="../../assets/css/dark/detail.css">
 </style>

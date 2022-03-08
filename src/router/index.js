@@ -14,6 +14,9 @@ export default [
     name: 'Detail',
     path: '/detail/:art_id',
     component: require('@/views/detail/index').default,
+    meta: {
+      title: ''
+    }
   },
   {
     name: 'Login',

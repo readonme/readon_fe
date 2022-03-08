@@ -28,7 +28,7 @@
     </div>
 
     <!--info-->
-    <div style="background-color: #e9e9e9;margin-top: 2em;">
+    <div style="background-color: #e9e9e9;margin: 2em 0;">
       <div class="section2">
         <h1 class="font_blue"
             style="background-color: #e9e9e9;text-align: center;">How do i earn rewards?</h1>
@@ -104,6 +104,10 @@ export default {
 }
 h5 {
   padding-bottom: 1em;
+  color: white;
+}
+.section2 > h5 {
+  color: black;
 }
 .h1_num {
   text-align: center;
@@ -113,5 +117,16 @@ h5 {
 .flex {
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  .section1,
+  .section2 {
+    width: 60%;
+    width: 90%;
+  }
+  h1 {
+    font-size: 40px;
+  }
 }
 </style>

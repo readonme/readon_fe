@@ -160,7 +160,6 @@ export default {
 
 <style  scoped>
 .loginbody {
-  background-color: #3a67d7;
 }
 .logoimg {
   width: 40%;
