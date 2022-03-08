@@ -8,12 +8,13 @@
       <p class="myname">{{ userObj.name }}</p>
       <Wallet />
 
-      <div class="mybal box">
+      <div class="mybal box"
+           v-show="showBal">
         <el-row>
           <el-col :span="8">
             <div class="">
               <p>1000</p>
-              <p>BCT$</p>
+              <p>$READ</p>
             </div>
           </el-col>
           <el-col :span="8">
@@ -53,7 +54,7 @@
           <div>
             <img src="@/assets/img/mine/3.png"
                  class="oprimg" />
-            <p>My Achievements</p>
+            <p>Achievements</p>
           </div>
         </el-col>
       </el-row>
@@ -62,7 +63,7 @@
     <!-- nft -->
     <div class="box">
       <div class="box-header">
-        <span class="task-head">NTF</span><span class="view-more">View More</span>
+        <span class="task-head">Nucleus</span><span class="view-more">View More</span>
       </div>
       <el-row>
         <el-col :span="8">
@@ -83,7 +84,23 @@
         </el-col>
         <el-col :span="8">
           <div class="nftbox">
-            <img src="@/assets/img/mine/nft1.png"
+            <img src="@/assets/img/mine/nft3.png"
+                 class="nftimg" />
+            <p>Fission</p>
+            <p>#1001</p>
+          </div>
+        </el-col>
+        <el-col :span="8">
+          <div class="nftbox">
+            <img src="@/assets/img/mine/nft4.png"
+                 class="nftimg" />
+            <p>Fission</p>
+            <p>#1001</p>
+          </div>
+        </el-col>
+        <el-col :span="8">
+          <div class="nftbox">
+            <img src="@/assets/img/mine/nft5.png"
                  class="nftimg" />
             <p>Fission</p>
             <p>#1001</p>
@@ -98,48 +115,48 @@
       <el-row>
         <el-col :span="20"
                 class="task-cont">
-          <p style="color: rgb(70, 100, 241); font-size: 2.5em">
+          <p class="task-cont-h1">
             Enter refreeal code
           </p>
           <p>Enter referral code to get 100 Points!</p>
         </el-col>
-        <el-col :span="3">
+        <el-col :span="4">
           <p class="tip">ENTER</p>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="20"
                 class="task-cont">
-          <p style="color: rgb(70, 100, 241); font-size: 2.5em">
+          <p class="task-cont-h1">
             Reading
           </p>
           <p>Read more to get more points!</p>
         </el-col>
-        <el-col :span="3">
+        <el-col :span="4">
           <p class="tip">0/50</p>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="20"
                 class="task-cont">
-          <p style="color: rgb(70, 100, 241); font-size: 2.5em">
+          <p class="task-cont-h1">
             Watch videos
           </p>
           <p>Watch more to get more points!</p>
         </el-col>
-        <el-col :span="3">
+        <el-col :span="4">
           <p class="tip">GO</p>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="20"
                 class="task-cont">
-          <p style="color: rgb(70, 100, 241); font-size: 2.5em">
+          <p class="task-cont-h1">
             Connect Facebook
           </p>
           <p>Connect your Facebook account</p>
         </el-col>
-        <el-col :span="3">
+        <el-col :span="4">
           <p class="tip">+100</p>
         </el-col>
       </el-row>
@@ -159,6 +176,7 @@ export default {
   data () {
     return {
       userObj: { name: "James" },
+      showBal: false
     };
   },
   mounted () {
@@ -177,7 +195,7 @@ export default {
   methods: {
     connectwallet () {
       let _this = this;
-      _this.timer = setInterval(async function () {//定时器开始 
+      _this.timer = setInterval(async function () {
         var addr = document.getElementsByClassName("swv-button")[0].getAttribute("title")
         if (addr !== null && addr.length > 10) {
           console.log(addr)
@@ -186,6 +204,7 @@ export default {
           console.log(res)
           if (res.status == 200) {
             TOKEN.setWallet(addr)
+            _this.showBal = true;
             clearInterval(_this.timer);// 满足条件时 停止计时
           }
         }
@@ -226,7 +245,8 @@ img {
   padding: 0.5em;
   border: none;
 }
-.myaddr {
+.myname {
+  margin: 0.5em auto;
 }
 .mybal {
   margin: 0 auto;
@@ -262,7 +282,7 @@ img {
   background-color: white;
   width: 100%;
   border-radius: 1em;
-  padding: 2em;
+  padding: 1em;
 }
 
 .tip {
@@ -285,6 +305,10 @@ img {
 .task-cont {
   text-align: left;
   padding-left: 2em;
+}
+.task-cont-h1 {
+  color: rgb(70, 100, 241);
+  font-size: 2.5em;
 }
 .view-more {
   float: right;
@@ -334,6 +358,82 @@ img {
   white-space: nowrap;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
+  .main {
+    padding-top: 10px;
+  }
+  .main > div {
+    width: 98%;
+    margin: 1.5em auto;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1em;
+    color: white;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+
+  /deep/ .swv-dropdown {
+    width: 100%;
+  }
+  /deep/ .swv-dropdown-list {
+    right: 30%;
+  }
+
+  /deep/ .swv-button-trigger {
+    border: 1px solid #fff;
+    border-radius: 1em;
+    width: 60%;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
+
+  /deep/ .swv-button {
+    border: 1px solid #fff;
+    border-radius: 1em;
+    width: 60%;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
+
+  /deep/ .swv-button > p {
+    font-size: 1 em;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 3px;
+  }
+
+  .nftbox {
+    margin: 5px;
+  }
+  .nftimg {
+    padding: 4px;
+  }
+  .task-head {
+    font-size: 2em;
+  }
+  .view-more {
+    font-size: 1em;
+  }
+
+  .task-cont {
+    padding-left: 0.5em;
+  }
+
+  .task-cont-h1 {
+    font-size: 1.5em;
+  }
+  .tip {
+    border-radius: 0.5em;
+    padding: 0.2em 0;
+    width: 16%;
+  }
 }
 </style>

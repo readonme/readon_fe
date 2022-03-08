@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <span class="title">ReadON</span>
+    <span class="title"><a href="/">ReadON</a></span>
     <span class="overview"
           v-show="!islogin"><a href="/#/login">Log in</a></span>
 
@@ -58,5 +58,15 @@ export default {
   margin: 0 auto;
   border-radius: 11em;
   text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .overview {
+    padding-right: 4%;
+  }
+  .title {
+    padding-left: 3%;
+    font-size: 2em;
+  }
 }
 </style>
