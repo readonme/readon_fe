@@ -9,11 +9,11 @@
 
 .story_title {
   font-size: 1em !important;
-  max-height: 2em;
+  max-height: 6em;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 3;
 }
 
 .story_content {
