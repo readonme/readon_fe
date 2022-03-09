@@ -83,7 +83,7 @@
                   <a :href="'#/detail/' + item.id"
                      target="_blank">
                     <h6 class="story_title">{{ item.title }}</h6>
-                    <p class="story_content">{{ item.short_content }}</p>
+                    <!-- <p class="story_content">{{ item.short_content }}</p> -->
                   </a>
                   <div class="news_botton">
                     <a class="tag tag-red"
