@@ -1,25 +1,30 @@
 <template>
-  <div v-loading="loading"
-       element-loading-text="doing">
+  <div v-loading="loading" element-loading-text="doing">
     <div class="fixed_div">
-      <ve-progress :is="component"
-                   :progress="progress"
-                   color="#1859ce"
-                   empty-color="transparent"
-                   :thickness="10"
-                   :empty-thickness="1"
-                   lineMode="in 40"
-                   :legend="false"
-                   animation="default 1000 100"
-                   fontSize="1em">
-        <img style="width:5em"
-             :src="require(`@/assets/img/detail/${imgurl}`)" />
+      <ve-progress
+        :is="component"
+        :progress="progress"
+        color="#1859ce"
+        empty-color="transparent"
+        :thickness="10"
+        :empty-thickness="1"
+        lineMode="in 40"
+        :legend="false"
+        animation="default 1000 100"
+        fontSize="1em"
+      >
+        <img
+          style="width: 5em"
+          :src="require(`@/assets/img/detail/${imgurl}`)"
+        />
       </ve-progress>
 
-      <img class="icon_jump"
-           v-show="bct_jump_show"
-           src="@/assets/img/detail/bct_jump.gif"
-           alt="img" />
+      <img
+        class="icon_jump"
+        v-show="bct_jump_show"
+        src="@/assets/img/detail/bct_jump.gif"
+        alt="img"
+      />
     </div>
 
     <!-- blog area Start -->
@@ -30,8 +35,7 @@
             <div class="breadcrumb-inner pb-4">
               <i class="fa fa-home fa-2"></i>
               <ul class="page-list">
-                <li><a href="/"
-                     style="font-size: 1.5em">Home</a></li>
+                <li><a href="/" style="font-size: 1.5em">Home</a></li>
                 <li style="font-size: 1.5em">Details</li>
               </ul>
             </div>
@@ -40,72 +44,78 @@
               <p class="subtitle">{{ articleObj.subTitle }}</p>
               <div></div>
               <div class="meta">
-                <a href="#"
-                   class="author">
-                  <img src="@/assets/img/mine/headimg.png"
-                       alt="img"
-                       style="width: 2em"
-                       onerror="this.src='@/assets/img/mine/headimg.png'" />
+                <a href="#" class="author">
+                  <img
+                    src="@/assets/img/mine/headimg.png"
+                    alt="img"
+                    style="width: 2em"
+                    onerror="this.src='@/assets/img/mine/headimg.png'"
+                  />
                   {{ articleObj.author }}
                 </a>
-                <el-button round
-                           type="primary"
-                           ref="followuser"
-                           style="padding: 9px 10px; margin-right: 2em;background: rgba(1,237,255,1);"
-                           @click="follow">Follow</el-button>
+                <el-button
+                  round
+                  type="primary"
+                  ref="followuser"
+                  style="
+                    padding: 9px 10px;
+                    margin-right: 2em;
+                    background: rgba(1, 237, 255, 1);
+                  "
+                  @click="follow"
+                  >Follow</el-button
+                >
               </div>
               <div class="meta float-sm-right">
                 <div class="date">
-                  <i class="fa fa-clock-o"
-                     style="color: #7c7577"></i>
+                  <i class="fa fa-clock-o" style="color: #7c7577"></i>
                   {{ articleObj.updatedAt }}
                 </div>
               </div>
               <div class="row">
-                <div v-html="articleObj.content"
-                     class="col-lg-12 dark-blog"></div>
+                <div
+                  v-html="articleObj.cleanContent"
+                  class="col-lg-12 dark-blog"
+                ></div>
               </div>
-              <img class="share-shadow"
-                   src="@/assets/img/detail/shadow.png">
+              <img class="share-shadow" src="@/assets/img/detail/shadow.png" />
               <div class="blog-share-area">
                 <ul class="social-area action">
                   <li>
-                    <i class="fa fa-thumbs-up fa-lg"
-                       @click="like"></i>
+                    <i class="fa fa-thumbs-up fa-lg" @click="like"></i>
                     {{ articleObj.like }}
                   </li>
                   <li>
-                    <i class="fa fa-thumbs-down fa-lg"
-                       @click="dislike"></i>
+                    <i class="fa fa-thumbs-down fa-lg" @click="dislike"></i>
                     {{ articleObj.unlike }}
                   </li>
                 </ul>
                 <ul class="social-area share">
                   <!-- share -->
                   <div class="share-network-list">
-                    <ShareNetwork v-for="network in networks"
-                                  :network="network.network"
-                                  :key="network.network"
-                                  :style="{ backgroundColor: network.color }"
-                                  :url="sharing.url"
-                                  :title="sharing.title"
-                                  :description="sharing.description"
-                                  :quote="sharing.quote"
-                                  :hashtags="sharing.hashtags"
-                                  :twitterUser="sharing.twitterUser">
+                    <ShareNetwork
+                      v-for="network in networks"
+                      :network="network.network"
+                      :key="network.network"
+                      :style="{ backgroundColor: network.color }"
+                      :url="sharing.url"
+                      :title="sharing.title"
+                      :description="sharing.description"
+                      :quote="sharing.quote"
+                      :hashtags="sharing.hashtags"
+                      :twitterUser="sharing.twitterUser"
+                    >
                       <i :class="network.icon"></i>
                     </ShareNetwork>
                   </div>
                 </ul>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- blog area End -->
-
   </div>
 </template>
 <script>
@@ -121,7 +131,7 @@ import TOKEN from "@/utils/token.js";
 import CACHE from "@/utils/cache.js";
 export default {
   name: "Detail",
-  data () {
+  data() {
     return {
       articleObj: {},
       centerDialogVisible: false,
@@ -137,10 +147,8 @@ export default {
       imgurl: "bct_o.gif",
       sharing: {
         url: window.location,
-        title:
-          "Hey, I'm reading a great article at ReadON! .",
-        description:
-          "Join me to earn extra bonus！",
+        title: "Hey, I'm reading a great article at ReadON! .",
+        description: "Join me to earn extra bonus！",
         quote: "The hot reload is so fast it's near instant. - Evan You",
         hashtags: "vuejs,vite,javascript",
         twitterUser: "youyuxi",
@@ -164,18 +172,23 @@ export default {
           icon: "fab fah fa-lg fa-telegram-plane",
           color: "#0088cc",
         },
-        { network: 'facebook', name: 'Facebook', icon: 'fab fah fa-lg fa-facebook-f', color: '#1877f2' },
-      ]
+        {
+          network: "facebook",
+          name: "Facebook",
+          icon: "fab fah fa-lg fa-facebook-f",
+          color: "#1877f2",
+        },
+      ],
     };
   },
   watch: {
-    activate (newVal, oldVal) {
+    activate(newVal, oldVal) {
       var that = this;
       if (newVal == true && oldVal == false) {
         Interval.run(that);
       }
     },
-    async progress (newVal, oldVal) {
+    async progress(newVal, oldVal) {
       var that = this;
       if (newVal === 100) {
         this.bct_jump_show = true;
@@ -206,7 +219,7 @@ export default {
       }
     },
   },
-  async created () {
+  async created() {
     //获取当前进度
     if (TOKEN.checkLogin()) {
       let lastprogress = Number(CACHE.get("readingProgress"));
@@ -235,15 +248,15 @@ export default {
     //console.log("************", this.articleObj);
   },
   computed: {
-    component () {
+    component() {
       return this.test ? "vue-ellipse-progress-test" : "vue-ellipse-progress";
     },
   },
   methods: {
-    handleScroll () {
+    handleScroll() {
       this.activate = true;
     },
-    runTimer () {
+    runTimer() {
       if (this.sec === 60) {
         this.sec = 0;
         this.progress = (this.sec * 100) / 60;
@@ -253,16 +266,16 @@ export default {
       this.progress = (this.sec * 100) / 60;
     },
     //激活页面
-    handleActivate () {
+    handleActivate() {
       // 监听页面是否是激活状态
       var hiddenProperty =
         "hidden" in document
           ? "hidden"
           : "webkitHidden" in document
-            ? "webkitHidden"
-            : "mozHidden" in document
-              ? "mozHidden"
-              : null;
+          ? "webkitHidden"
+          : "mozHidden" in document
+          ? "mozHidden"
+          : null;
       if (!document[hiddenProperty]) {
         CACHE.set("readingProgress", this.progress);
         console.log("页面非激活");
@@ -272,8 +285,8 @@ export default {
         console.log("页面激活");
       }
     },
-    follow () { },
-    async like () {
+    follow() {},
+    async like() {
       if (TOKEN.checkLogin()) {
         let res = await articleLike({
           aid: this.articleObj.id,
@@ -289,7 +302,7 @@ export default {
         this.$router.push("/login");
       }
     },
-    async dislike () {
+    async dislike() {
       if (TOKEN.checkLogin()) {
         let res = await articleDisLike({
           aid: this.articleObj.id,
@@ -305,7 +318,7 @@ export default {
         this.$router.push("/login");
       }
     },
-    async vote () {
+    async vote() {
       // 获取余额
       //if (this.$checkLogin() && this.$checkWallet()) {
       if (true) {
@@ -320,7 +333,7 @@ export default {
         this.$router.push("/login");
       }
     },
-    async submitTran () {
+    async submitTran() {
       var mywallet = TOKEN.getWallet();
       var ammount = this.votenum;
       console.log("当前值", this.votenum);
@@ -348,7 +361,7 @@ export default {
       }
     },
   },
-  mounted () {
+  mounted() {
     if (TOKEN.checkLogin() && TOKEN.checkWallet()) {
       Interval.addTask(this.runTimer);
       var that = this;
@@ -360,7 +373,7 @@ export default {
       CACHE.set("readingProgress", this.progress);
     });
   },
-  unmounted () {
+  unmounted() {
     CACHE.set("readingProgress", this.progress);
     window.removeEventListener("scroll", this.handleScroll);
     window.removeEventListener("visibilitychange", this.handleScroll);

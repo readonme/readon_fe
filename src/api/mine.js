@@ -1,7 +1,7 @@
 import request from '@/utils/request.js'
 const host = "http://ec2-54-178-107-66.ap-northeast-1.compute.amazonaws.com:9958"
 
-export function userInfo () {
+export function userInfo() {
   return request({
     url: host + "/api_v2/auth/me",
     method: "get"
@@ -9,7 +9,7 @@ export function userInfo () {
 }
 
 //  绑定钱包  
-export function bindWallet (data) {
+export function bindWallet(data) {
   var res = request({
     url: host + "/api_v2/auth/connectwallet",
     method: "post",
@@ -19,7 +19,7 @@ export function bindWallet (data) {
 }
 
 //获取奖励
-export function getReward () {
+export function getReward() {
   var res = request({
     url: host + "/api_v2/auth/get_reward",
     method: "post"
