@@ -1,9 +1,10 @@
 import request from '@/utils/request.js'
 const host = "http://ec2-54-178-107-66.ap-northeast-1.compute.amazonaws.com:9958"
+// const host = "http://localhost:9958"
 const PERPAGE = 10
 
 // 1，获取频道列表
-export function cateList () {
+export function cateList() {
   return request({
     url: host + "/api_v2/article/category",
     method: "get"
@@ -12,7 +13,7 @@ export function cateList () {
 
 
 //获取top vote文章列表
-export function articleTopVoteList (params) {
+export function articleTopVoteList(params) {
   let page = 1
   if (params.hasOwnProperty("page") && (params.page != null)) {
     page = params.page
@@ -30,7 +31,7 @@ export function articleTopVoteList (params) {
 }
 
 //获取文章列表
-export function articleList (params) {
+export function articleList(params) {
   console.log(params)
   let page = 1
   if (params.hasOwnProperty("page") && (params.page != null)) {
@@ -51,7 +52,7 @@ export function articleList (params) {
 
 
 // 获取文章详情
-export function articleDetail (params) {
+export function articleDetail(params) {
   return request({
     url: host + "/api_v2/article/detail?aid=" + `${params.art_id}`,
     method: "get"
@@ -61,7 +62,7 @@ export function articleDetail (params) {
 
 
 //点赞文章
-export function articleLike (params) {
+export function articleLike(params) {
   return request({
     url: host + "/api/article/like?aid=" + params.aid + "&like=1",
     method: "get"
@@ -70,7 +71,7 @@ export function articleLike (params) {
 
 
 // 对文章不喜欢 
-export function articleDisLike (params) {
+export function articleDisLike(params) {
   return request({
     url: host + "/api/article/like?aid=" + params.aid + "&type=unlike&add=1",
     method: "get"
