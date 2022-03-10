@@ -30,7 +30,7 @@
                 <div class="meta">
                   <div class="date">
                     <i class="fa fa-clock-o"></i>
-                    {{ item.createdAt }}
+                    {{ formatTime(item.createdAt) }}
                   </div>
                 </div>
                 <h6 class="top_title">
@@ -75,7 +75,7 @@
                   <div class="meta d-block mt-3">
                     <div class="date">
                       <i class="fa fa-clock-o"></i>
-                      {{ item.createdAt }}
+                      {{ formatTime(item.createdAt) }}
                       <i class="fa author"></i>
                       {{ item.author }}
                     </div>
@@ -83,7 +83,7 @@
                   <a :href="'#/detail/' + item.id"
                      target="_blank">
                     <h6 class="story_title">{{ item.title }}</h6>
-                    <p class="story_content">{{ item.short_content }}</p>
+                    <!-- <p class="story_content">{{ item.short_content }}</p> -->
                   </a>
                   <div class="news_botton">
                     <a class="tag tag-red"
@@ -121,7 +121,7 @@
 </template>
 <script> 
 import { cateList, articleList, articleTopVoteList } from "@/api/article.js";
-
+import moment from 'moment';
 export default {
   name: "Home",
   components: {
@@ -178,6 +178,9 @@ export default {
         console.log(err);
       } finally {
       }
+    },
+    formatTime(time){
+      return time && moment(time).format('YYYY-MM-DD hh:mm') || time
     }
   },
 };
