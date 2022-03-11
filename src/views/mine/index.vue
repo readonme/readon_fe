@@ -279,8 +279,7 @@ img {
   margin: 3em;
   border-radius: 1em;
 }
-.nftimg {
-  background-color: white;
+.nftimg { 
   width: 100%;
   border-radius: 1em;
   padding: 1em;
