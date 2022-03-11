@@ -98,19 +98,43 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="section-title">
-              <h4 class="title">Categories</h4>
-            </div>
-            <ul class="widget widget-categories">
-              <li v-for="item in cateObjList">
-                <div class="thumb"><img :src="item.memo.img"
-                       alt="img" /></div>
-                <a :href="'#/category/' + item.id"
-                   target="_blank">
-                  {{item.title}}
-                </a>
-              </li>
-            </ul>
+            <section class="hottopic-wapper">
+              <div class="section-title">
+                <h4 class="title">Hot Topic</h4>
+              </div>
+              <div class="section-content">
+                <ul class="widget widget-hottopic">
+                    <li v-for="item in hotTopicList">
+                      <div class="hottopic-title">{{item.topicName}}</div>
+                      <div class="hottopic-info">
+                        <span class="hottopic-perc" :style='{paddingRight:item.topicHotPercent}'></span>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="my-hottopic-btn">
+                    <a class="see-all-btn dark-see-all-btn"
+                    href="#">My Topic</a>
+                  </div>
+              </div>
+ 
+
+            </section>
+            <section class="categories-wapper">
+              <div class="section-title">
+                <h4 class="title">Categories</h4>
+              </div>
+              <ul class="widget widget-categories">
+                <li v-for="item in cateObjList">
+                  <div class="thumb"><img :src="item.memo.img"
+                        alt="img" /></div>
+                  <a :href="'#/category/' + item.id"
+                    target="_blank">
+                    {{item.title}}
+                  </a>
+                </li>
+              </ul>
+            </section>
+
           </div>
         </div>
       </div>
@@ -142,12 +166,44 @@ export default {
     //console.log("this.toparticles", articleRes)
     let articleRes2 = await articleList(params);
     //this.articles = articleRes2.data.data;
+
+    //this is hot topic static data for test
+    this.hotTopicList = [{
+      topicName:'Fassion',
+      topicHotPercent:"100%"
+
+    },
+    {
+    
+      topicName:'Sport',
+      topicHotPercent:"90%"
+
+    },
+    {
+    
+      topicName:'LifeStyle',
+      topicHotPercent:"80%"
+
+    },
+    {
+    
+      topicName:'Fun',
+      topicHotPercent:"70%"
+
+    },
+    {
+    
+      topicName:'News',
+      topicHotPercent:"40%"
+
+    }]
   },
   data () {
     return {
       toparticles: [],
       articles: [],
       cateObjList: [],
+      hotTopicList:[],
       loading: false,
       page: 1,
       loadMsg: "Load More",
