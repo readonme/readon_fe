@@ -86,6 +86,9 @@ export default {
   font-size: 1.5em;
   font-weight: bold;
 }
+/deep/.el-icon--right {
+    margin-left: -1em;
+}
 .fa {
   border: 1px solid #fff;
   padding: 9px;
