@@ -359,7 +359,7 @@ img {
   white-space: nowrap;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .main {
     padding-top: 10px;
   }
