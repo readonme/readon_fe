@@ -55,7 +55,7 @@
               <div class="section-content">
                 <ul class="widget widget-hottopic">
                     <li v-for="item in hotTopicList">
-                      <div class="hottopic-title">{{item.topicName}}</div>
+                      <div class="hottopic-title">#{{item.topicName}}</div>
                       <div class="hottopic-info">
                         <span class="hottopic-perc" :style='{paddingRight:item.topicHotPercent}'></span>
                       </div>
@@ -134,7 +134,7 @@
               <div class="section-content">
                 <ul class="widget widget-hottopic">
                   <li v-for="item in hotTopicList">
-                    <div class="hottopic-title">{{item.topicName}}</div>
+                    <div class="hottopic-title">#{{item.topicName}}</div>
                     <div class="hottopic-info">
                       <span class="hottopic-perc"
                             :style='{paddingRight:item.topicHotPercent}'></span>
