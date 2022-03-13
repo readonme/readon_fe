@@ -5,10 +5,11 @@
         <!--<img src="@/assets/img/logo_3.png"
              class="logoimg" />-->
         <h1>Login</h1>
-        <el-form :model="loginForm" status-icon ref="loginForm">
-          <el-form-item
-            prop="email"
-            :rules="[
+        <el-form :model="loginForm"
+                 status-icon
+                 ref="loginForm">
+          <el-form-item prop="email"
+                        :rules="[
               {
                 required: true,
                 message: 'Email is required',
@@ -19,44 +20,34 @@
                 message: 'Email is invalid',
                 trigger: ['blur', 'change'],
               },
-            ]"
-          >
-            <el-input
-              v-model="loginForm.email"
-              class="forminput"
-              placeholder="Email Address"
-              required="true"
-            ></el-input>
+            ]">
+            <el-input v-model="loginForm.email"
+                      class="forminput"
+                      placeholder="Email Address"
+                      required="true"></el-input>
           </el-form-item>
-          <el-form-item
-            prop="password"
-            :rules="[
+          <el-form-item prop="password"
+                        :rules="[
               {
                 required: true,
                 message: 'Password is required',
                 trigger: 'blur',
               },
-            ]"
-          >
-            <el-input
-              type="password"
-              v-model="loginForm.password"
-              placeholder="Password"
-              autocomplete="off"
-              required="true"
-            ></el-input>
+            ]">
+            <el-input type="password"
+                      v-model="loginForm.password"
+                      placeholder="Password"
+                      autocomplete="off"
+                      required="true"></el-input>
           </el-form-item>
           <div class="btns">
-            <el-button type="primary" @click="login()">Login</el-button>
+            <el-button type="primary"
+                       @click="login()">Login</el-button>
           </div>
         </el-form>
         <div class="toRegister">
           <span>Don't have an account？</span>
-          <router-link to="/register"
-            ><span style="color: rgba(58, 103, 215, 1)"
-              >Sign up</span
-            ></router-link
-          >
+          <router-link to="/register"><span style="color: rgba(58, 103, 215, 1)">Sign up</span></router-link>
         </div>
       </div>
     </div>
@@ -67,8 +58,9 @@
 <script>
 import TOKEN from "@/utils/token.js";
 import { login } from "@/api/login";
+import { userInfo } from "@/api/mine";
 export default {
-  data() {
+  data () {
     return {
       loginForm: {
         email: "",
@@ -77,19 +69,18 @@ export default {
     };
   },
   methods: {
-    resetForm(formName) {
+    resetForm (formName) {
       this.$refs[formName].resetFields();
     },
-    async login() {
+    async login () {
       let datas = this.loginForm;
       let res = await login(datas);
-      if (
-        res.status == 200 &&
-        res.data &&
-        res.data.code == 200 &&
-        res.data.token
-      ) {
+      if (res.status == 200 && res.data && res.data.code == 200 && res.data.token) {
         TOKEN.setToken(res.data.token);
+        let res1 = await userInfo(datas);
+        if (res1.status == 200 && res1.data) {
+          TOKEN.setWallet(res1.data.data.principal);
+        }
         if (this.$route.path == "/login") {
           this.$router.push("/");
         } else {
@@ -101,8 +92,7 @@ export default {
     },
   },
 };
-</script>
-
+</script> 
 <style  scoped>
 .loginbody {
 }

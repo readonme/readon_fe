@@ -1,17 +1,21 @@
 <template>
   <div class="header">
     <span class="title"><a href="/">ReadON</a></span>
+
     <span class="overview"
           v-show="!islogin"><a href="/#/login">Log in</a></span>
 
+    <span class="title market"><a href="http://market.readon.me/"
+         target=_black>Market</a></span>
+
     <el-dropdown>
-      <span class="el-dropdown-link info"
-            v-show="islogin">
-        <a href="/#/mine"><i class="fa fa-user"></i></a>
-        <el-icon class="el-icon--right">
-          <arrow-down />
-        </el-icon>
-      </span>
+      <a href="/#/mine"><span class="el-dropdown-link info"
+              v-show="islogin">
+          <i class="fa fa-user"></i>
+          <el-icon class="el-icon--right">
+            <arrow-down />
+          </el-icon>
+        </span></a>
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item @click.native="logout()">Logout</el-dropdown-item>
@@ -77,6 +81,11 @@ export default {
   font-size: 1.5em;
   font-weight: bold;
 }
+.market {
+  color: #0d6efd;
+  padding-left: 2%;
+  font-size: 2em;
+}
 /deep/.el-dropdown {
   float: right;
   color: white;
@@ -87,7 +96,7 @@ export default {
   font-weight: bold;
 }
 /deep/.el-icon--right {
-    margin-left: -1em;
+  margin-left: -1em;
 }
 .fa {
   border: 1px solid #fff;
