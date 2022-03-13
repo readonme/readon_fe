@@ -1,13 +1,33 @@
 <template>
   <div class="pd-top-50 pd-bottom-50 main">
     <!-- myheader -->
-    <div class="header">
-      <img src="@/assets/img/mine/headimg.png"
-           border="2"
-           class="myheadimg" />
-      <p class="myname">{{ userObj.name }}</p>
-      <Wallet />
 
+    <!-- Avatars -->
+    <div class="avatarsbox"
+         v-show="showAvaBox">
+      <el-row>
+        <el-col :span="4"
+                v-for="item in avatars">
+          <img :src="item.url"
+               class="avatarimg"
+               @click="submitAvatar(item.id,item.url)" />
+        </el-col>
+      </el-row>
+    </div>
+    <div class="header">
+      <img :src=userObj.headimgurl
+           border="2"
+           class="myheadimg"
+           @click="selectAvatars" />
+      <p class="myname"><span contenteditable="false"
+              id="nickname"
+              @blur="editName()">{{ userObj.name }}</span>
+        <i class="fa fa-pencil"
+           style="margin-left: 0.5em;"
+           aria-hidden="true"
+           @click="enableEdit()"></i>
+      </p>
+      <Wallet />
       <div class="mybal box"
            v-show="showBal">
         <el-row>
@@ -112,62 +132,61 @@
     <!-- task -->
     <div class="box">
       <div class="box-header"><span class="task-head">Earn Points</span></div>
-      <el-row>
-        <el-col :span="20"
+      <el-row v-if="!isConnectWallet">
+        <el-col :span="19"
                 class="task-cont">
           <p class="task-cont-h1">
-            Enter refreeal code
+            Take Your Wallet
           </p>
-          <p>Enter referral code to get 100 Points!</p>
+          <p>Connect your wallet, or create a new one to earn income</p>
         </el-col>
         <el-col :span="4">
-          <p class="tip">ENTER</p>
+          <p class="tip">+50</p>
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="20"
+        <el-col :span="19"
                 class="task-cont">
           <p class="task-cont-h1">
-            Reading
+            Start Reading To Earn
           </p>
-          <p>Read more to get more points!</p>
+          <p>Read an article and get your first earnings!</p>
         </el-col>
         <el-col :span="4">
-          <p class="tip">0/50</p>
+          <p class="tip">0/1</p>
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="20"
+        <el-col :span="19"
                 class="task-cont">
           <p class="task-cont-h1">
-            Watch videos
+            See What Cryptocurrency Is
           </p>
-          <p>Watch more to get more points!</p>
+          <p>Read three pieces of content related to cryptocurrency</p>
         </el-col>
         <el-col :span="4">
-          <p class="tip">GO</p>
+          <p class="tip">1/3</p>
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="20"
+        <el-col :span="19"
                 class="task-cont">
           <p class="task-cont-h1">
-            Connect Facebook
+            Read Some Words Quietly
           </p>
-          <p>Connect your Facebook account</p>
+          <p>Read a total of fifteen minutes of content</p>
         </el-col>
         <el-col :span="4">
-          <p class="tip">+100</p>
+          <p class="tip">3/15</p>
         </el-col>
       </el-row>
     </div>
-
   </div>
 </template>
 
 <script> 
 
-import { userInfo, bindWallet } from "@/api/mine.js";
+import { userInfo, bindWallet, changeName, allAvatars, changeAvatar } from "@/api/mine.js";
 import Wallet from "../components/wallet.vue";
 import TOKEN from "@/utils/token.js";
 export default {
@@ -175,13 +194,16 @@ export default {
   components: { Wallet },
   data () {
     return {
-      userObj: { name: "James" },
-      showBal: false
+      userObj: {},
+      showBal: false,
+      originWallet: "",
+      avatars: [],
+      showAvaBox: false,
+      isConnectWallet: false
     };
   },
   mounted () {
     this.connectwallet();
-
   },
   async created () {
     if (!TOKEN.checkLogin()) {
@@ -190,26 +212,52 @@ export default {
     let res = await userInfo();
     if (res.status == 200 && res.data) {
       this.userObj = res.data.data;
+      var principal = this.userObj.principal
+      if (principal.length > 16) {
+        this.originWallet = principal
+        var length = this.originWallet.length
+        this.showBal = true;
+        this.isConnectWallet = true
+        document.getElementsByClassName("swv-button")[0].children[1].innerHTML = this.originWallet.substring(0, 4) + ".." + this.originWallet.substring(length - 4, length)
+
+
+      }
     }
   },
   methods: {
+    async selectAvatars () {
+      let res = await allAvatars()
+      this.avatars = res.data.data
+      this.showAvaBox = true
+    },
+    async submitAvatar (id, url) {
+      console.log(id, url)
+      this.userObj.headimgurl = url
+      changeAvatar({ "avatar_id": id })
+      this.showAvaBox = false
+    },
+    enableEdit () {
+      document.getElementById("nickname").setAttribute("contenteditable", true)
+    },
+    async editName () {
+      var newName = document.getElementById("nickname").innerHTML
+      await changeName({ "name": newName })
+      document.getElementById("nickname").setAttribute("contenteditable", false)
+    },
     connectwallet () {
       let _this = this;
       _this.timer = setInterval(async function () {
         var addr = document.getElementsByClassName("swv-button")[0].getAttribute("title")
-        console.log(addr)
-        if (addr !== null && addr.length > 16) {
-          console.log(addr)
+        if (addr !== null && addr.length > 16 && addr !== this.originWallet) {
           var data = { "principal": addr, "type": "SOL" }
           var res = await bindWallet(data)
-          console.log(res)
           if (res.status == 200) {
             TOKEN.setWallet(addr)
             _this.showBal = true;
             clearInterval(_this.timer);// 满足条件时 停止计时
           }
         }
-      }, 1000)
+      }, 2000)
     }
 
   }
@@ -255,6 +303,21 @@ img {
   margin-top: 1em;
   background: rgba(42, 42, 42, 0.45) !important;
 }
+.avatarsbox {
+  width: 50% !important;
+  position: absolute;
+  margin: 0 25% !important;
+  text-align: center;
+  z-index: 1000;
+  background-color: white;
+  padding: 1em;
+  border-radius: 1em;
+}
+.avatarimg {
+  width: 100%;
+  border-radius: 1em;
+  padding: 0.3em;
+}
 .box {
   background: rgb(39, 42, 52);
   border-radius: 1em;
@@ -279,7 +342,7 @@ img {
   margin: 3em;
   border-radius: 1em;
 }
-.nftimg { 
+.nftimg {
   width: 100%;
   border-radius: 1em;
   padding: 1em;
@@ -293,7 +356,7 @@ img {
   top: 0;
   bottom: 0;
   width: 14%;
-  height: 55%;
+  height: 2em;
   margin: auto;
 }
 
@@ -356,6 +419,7 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 0px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -432,8 +496,9 @@ img {
   }
   .tip {
     border-radius: 0.5em;
-    padding: 0.2em 0;
     width: 16%;
+    height: 3em;
+    line-height: 3em;
   }
 }
 </style>

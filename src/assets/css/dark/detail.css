@@ -155,10 +155,6 @@ a[class^="share-network-"] span {
   a[class^="share-network-"] {
     margin: 10px 10px 10px 0;
   }
-
-
-
-
 }
 
 /* dark */
@@ -183,4 +179,12 @@ a[class^="share-network-"] span {
 .blog-share-area {
   background-color: rgba(249, 249, 251, 1);
   color: rgba(112, 112, 112, 1);
+}
+
+/deep/.el-message-box {
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+
+/deep/.el-message-box__title {
+  color: #edeff3;
 }

@@ -13,8 +13,34 @@ import "@/assets/css/responsive.css";
 //element-ui 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
 import veProgress from "vue-ellipse-progress";
+
+//socail share
+import VueSocialSharing from 'vue-social-sharing'
+
+//wallet
+import {
+  PhantomWalletAdapter,
+  SlopeWalletAdapter,
+  SolflareWalletAdapter,
+  SolletExtensionWalletAdapter,
+  SolletWalletAdapter,
+  TorusWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
+import { initWallet } from "solana-wallets-vue";
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { initWorkspace } from "@/composables";
+const network = WalletAdapterNetwork.Devnet;
+const wallets = [
+  new PhantomWalletAdapter(),
+  new SlopeWalletAdapter(),
+  new SolflareWalletAdapter({ network }),
+  new TorusWalletAdapter(),
+  new SolletWalletAdapter({ network }),
+  new SolletExtensionWalletAdapter({ network }),
+];
+initWallet({ wallets, autoConnect: false });
+initWorkspace();
 
 // Routing.
 import TOKEN from "@/utils/token.js";
@@ -28,8 +54,6 @@ const router = createRouter({
 })
 
 
-
-import VueSocialSharing from 'vue-social-sharing'
 
 
 // Create the app.
