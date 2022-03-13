@@ -45,6 +45,35 @@
         </div>
       </div>
     </div>
+    <div class="hottopic-wapper-out container">
+       <div class="row">
+         <div class="col-lg-8">
+            <section class="hottopic-wapper">
+              <div class="section-title">
+                <h4 class="title">Hot Topic</h4>
+              </div>
+              <div class="section-content">
+                <ul class="widget widget-hottopic">
+                    <li v-for="item in hotTopicList">
+                      <div class="hottopic-title">{{item.topicName}}</div>
+                      <div class="hottopic-info">
+                        <span class="hottopic-perc" :style='{paddingRight:item.topicHotPercent}'></span>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="my-hottopic-btn">
+                    <a class="see-all-btn dark-see-all-btn"
+                    href="#">My Topic</a>
+                  </div>
+              </div>
+
+
+            </section>
+         </div>
+
+       </div>
+
+    </div>
     <!-- news-area Start -->
     <div class="pd-top-50 pd-bottom-30"
          id="articlesFeed">
@@ -98,7 +127,7 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <section class="hottopic-wapper">
+            <section class="hottopic-wapper hottopic-wapper-slide">
               <div class="section-title">
                 <h4 class="title">Hot Topic</h4>
               </div>

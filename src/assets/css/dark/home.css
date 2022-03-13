@@ -47,6 +47,18 @@
   }
 }
 
+
+@media(min-width: 992px){
+  .hottopic-wapper-out{
+    display: none;
+  }
+}
+@media(max-width: 992px){
+  .hottopic-wapper-slide{
+    display: none;
+  }
+}
+
 @-webkit-keyframes rotate {
   0% {
     -webkit-transform: rotate(0deg);
