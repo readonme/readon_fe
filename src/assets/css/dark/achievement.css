@@ -1,0 +1,81 @@
+.achievement-page{
+    position: relative;
+    padding: 20px 10px;
+    font-size: 1.2rem;
+}
+
+.achievement-header{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+}
+
+.achievement-header-tip{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.achievement-header-title{
+    font-size: 1.2rem;
+}
+
+
+.achievement-header-image{
+    width: 35vw;
+    padding: 20px 0;
+}
+
+.achievement-header-count{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 10px 0 20px 0;
+}
+
+.achievement-header-reach-count{
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 3rem;
+}
+
+.achievement-header-split{
+    font-size: 3rem;
+    line-height: 3rem;
+    padding: 0 10px;
+}
+.achievement-header-total-count{
+    font-size: 1.2rem;
+    /* line-height:  1.2rem; */
+}
+
+.achievement-content{
+    border-top: 2px solid rgb(189 184 184 / 45%);
+    margin-top: 30px;
+}
+
+.achievement-c-title{
+    line-height: 4rem;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+   
+
+.achievement-c-list{
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    /* justify-content: space-between; */
+}
+.achievement-c{
+    width: 33%;
+    margin-bottom: 20px;
+}
+
+.achievement-c-image{
+   padding: 0 20px;
+   width: 100%;
+}

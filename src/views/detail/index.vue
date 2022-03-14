@@ -96,6 +96,10 @@
               <div class="blog-share-area">
                 <ul class="social-area action">
                   <li>
+                    <i class="fa fa-thumbs-vote fa-lg"
+                       @click="vote">{{articleVoted?'Voted':'Vote'}}</i>
+                  </li>
+                  <li>
                     <i class="fa fa-thumbs-up fa-lg"
                        @click="like"></i>
                     {{ articleObj.like }}
@@ -169,6 +173,7 @@ export default {
         hashtags: "readon",
         twitterUser: "youyuxi",
       },
+      articleVoted:false,
       networks: [
         {
           network: "whatsapp",
@@ -320,6 +325,26 @@ export default {
       }
     },
     follow () { },
+    async vote () {
+      //for test 
+      // console.log(11)
+      this.articleVoted = !this.articleVoted;
+      return;
+      if (TOKEN.checkLogin()) {
+        let res = await articleLike({
+          aid: this.articleObj.id,
+        });
+        if (res.data.code == 0) {
+          //刷新文章喜欢数
+          let res = await articleDetail({
+            art_id: this.$route.params.art_id,
+          });
+          this.articleObj = res.data.data;
+        }
+      } else {
+        this.$router.push("/login");
+      }
+    },
     async like () {
       if (TOKEN.checkLogin()) {
         let res = await articleLike({

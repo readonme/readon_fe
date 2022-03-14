@@ -19,6 +19,14 @@ export default [
     }
   },
   {
+    name: 'Achievement',
+    path: '/achievement',
+    component: require('@/views/achievement/index').default,
+    meta: {
+      title: ''
+    }
+  },
+  {
     name: 'Login',
     path: '/login',
     component: require('@/views/login/login').default,
