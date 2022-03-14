@@ -18,7 +18,7 @@
 
       <img class="icon_jump"
            v-show="bct_jump_show"
-           src="@/assets/img/detail/bct_jump.gif"
+           :src="bct_jump_show?require('@/assets/img/detail/bct_jump.gif'):''"
            alt="img" />
     </div>
 
