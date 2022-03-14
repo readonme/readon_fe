@@ -1,7 +1,9 @@
 <template>
   <div class="achievement-page">
     <div class="achievement-header">
-      <div class="achievement-header-tip">Mint Buzz Now!</div>
+      <div class="achievement-header-tip" @click="sum(1, 1)">
+        Mint Buzz Now!
+      </div>
       <img
         src="@/assets/img/achievement/mintnft.png"
         class="achievement-header-image"
@@ -16,127 +18,160 @@
     <div class="achievement-content">
       <div class="achievement-c-title">The Gate Of Crypto</div>
       <div class="achievement-c-list">
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/1WALLET.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/1CRYPTO.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/5CRYPTO.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <template v-if="false">
+            <img
+              src="@/assets/img/achievement/10CRYPTO.png"
+              class="achievement-c-image"
+          /></template>
+          <template v-else>
+            <img
+              src="@/assets/img/achievement/grey/10CRYPTO.png"
+              class="achievement-c-image"
+            />
+          </template>
+        </div>
       </div>
     </div>
     <div class="achievement-content">
       <div class="achievement-c-title">Daily Reading</div>
       <div class="achievement-c-list">
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-      </div>
-    </div>
-    <div class="achievement-content">
-      <div class="achievement-c-title">Daily Reading</div>
-      <div class="achievement-c-list">
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/1DAYS.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/3DAYS.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/7DAYS.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/14DAYS.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/30DAYS.png"
+            class="achievement-c-image"
+          />
+        </div>
       </div>
     </div>
     <div class="achievement-content">
       <div class="achievement-c-title">Release Impact</div>
       <div class="achievement-c-list">
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/3SHARES.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/10SHARES.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/20SHARES.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/30SHARES.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/50SHARES.png"
+            class="achievement-c-image"
+          />
+        </div>
       </div>
     </div>
-        <div class="achievement-content">
+    <div class="achievement-content">
       <div class="achievement-c-title">Immerse Yourself</div>
       <div class="achievement-c-list">
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/3HOURS.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/4HOURS.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/9HOURS.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/16HOURS.png"
+            class="achievement-c-image"
+          />
+        </div>
       </div>
     </div>
-        <div class="achievement-content">
+
+    <div class="achievement-content">
       <div class="achievement-c-title">Mentorship Path</div>
       <div class="achievement-c-list">
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
-        <img
-          src="@/assets/img/achievement/mintnft.png"
-          class="achievement-c-image"
-        />
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/3INVITES.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/6INVITES.png"
+            class="achievement-c-image"
+          />
+        </div>
+        <div class="achievement-c">
+          <img
+            src="@/assets/img/achievement/10INVITES.png"
+            class="achievement-c-image"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -152,7 +187,12 @@ export default {
     return {};
   },
 
-  methods: {},
+  methods: {
+    sum(a, b) {
+      alert(a + b);
+      return a + b;
+    },
+  },
 };
 </script>
 <style scoped src="../../assets/css/dark/achievement.css"></style>

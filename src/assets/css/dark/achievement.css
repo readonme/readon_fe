@@ -42,8 +42,8 @@
 }
 
 .achievement-header-split{
-    font-size: 1.2rem;
-    /* line-height:  1.2rem; */
+    font-size: 3rem;
+    line-height: 3rem;
     padding: 0 10px;
 }
 .achievement-header-total-count{
@@ -52,21 +52,30 @@
 }
 
 .achievement-content{
-    border-top: 2px solid white;
-
+    border-top: 2px solid rgb(189 184 184 / 45%);
+    margin-top: 30px;
 }
 
 .achievement-c-title{
-    line-height: 3rem;
+    line-height: 4rem;
     text-align: center;
     font-weight: 500;
-   
+    margin-bottom: 10px;
 }
+   
 
 .achievement-c-list{
     display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    /* justify-content: space-between; */
+}
+.achievement-c{
+    width: 33%;
+    margin-bottom: 20px;
 }
 
 .achievement-c-image{
-    width: 33%;
+   padding: 0 20px;
+   width: 100%;
 }
