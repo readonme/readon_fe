@@ -75,6 +75,11 @@
     margin-bottom: 20px;
 }
 
+@media only screen and (min-width: 500px) {
+    .achievement-c{
+        width: 200px;
+    }
+}
 .achievement-c-image{
    padding: 0 20px;
    width: 100%;
