@@ -14,6 +14,7 @@
       </div>
     </div>
     <div class="achievement-content">
+      <div class="achievement-c-line"></div>
       <div class="achievement-c-title">The Gate Of Crypto</div>
       <div class="achievement-c-list">
         <div class="achievement-c">
@@ -50,6 +51,7 @@
       </div>
     </div>
     <div class="achievement-content">
+      <div class="achievement-c-line"></div>
       <div class="achievement-c-title">Daily Reading</div>
       <div class="achievement-c-list">
         <div class="achievement-c">
@@ -106,6 +108,7 @@
       </div>
     </div>
     <div class="achievement-content">
+      <div class="achievement-c-line"></div>
       <div class="achievement-c-title">Release Impact</div>
       <div class="achievement-c-list">
         <div class="achievement-c">
@@ -141,6 +144,7 @@
       </div>
     </div>
     <div class="achievement-content">
+      <div class="achievement-c-line"></div>
       <div class="achievement-c-title">Immerse Yourself</div>
       <div class="achievement-c-list">
         <div class="achievement-c">
@@ -171,6 +175,7 @@
     </div>
 
     <div class="achievement-content">
+      <div class="achievement-c-line"></div>
       <div class="achievement-c-title">Mentorship Path</div>
       <div class="achievement-c-list">
         <div class="achievement-c">
