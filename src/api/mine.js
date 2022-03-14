@@ -52,6 +52,17 @@ export function getReward () {
   })
   return res
 }
+
+//get balnae
+export function getBalance () {
+  return request({
+    url: host + "/api_v2/auth/get_balance",
+    method: "get"
+  })
+}
+
+
+
 // // 获取stake列表
 // // export function stakeList(params) {
 // //     return request({

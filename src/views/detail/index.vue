@@ -1,6 +1,6 @@
 <template>
-  <div v-loading="loading"
-       element-loading-text="doing">
+  <loading v-if="loadingflag" />
+  <div>
     <div class="fixed_div">
       <ve-progress :is="component"
                    :progress="progress"
@@ -15,6 +15,8 @@
         <img style="width: 5em"
              :src="require(`@/assets/img/detail/${imgurl}`)" />
       </ve-progress>
+      <div id="wrapper"
+           v-if="balance"> {{balance}} $</div>
 
       <img class="icon_jump"
            v-show="bct_jump_show"
@@ -79,7 +81,6 @@
                   {{ articleObj.readTime}}
                 </div>
               </div>
-
               <div class="row">
                 <div v-if="articleObj.sourceUrl"
                      class="meta"
@@ -136,26 +137,26 @@
   </div>
 </template>
 <script>
+import loading from "../components/loading.vue";
 import { formatTime } from "@/utils/common_tools";
 import { articleDetail, articleLike, articleDisLike } from "@/api/article.js";
-import { getReward } from "@/api/mine.js";
+import { getBalance, getReward } from "@/api/mine.js";
 import { ElNotification } from "element-plus";
 import { h } from "vue";
 import { ElMessageBox, ElMessage } from 'element-plus'
-
-//import { Message } from 'element-ui';
-import { ElLoading } from "element-plus";
 import Interval from "@/utils/interval";
 import TOKEN from "@/utils/token.js";
 import CACHE from "@/utils/cache.js";
 export default {
   name: "Detail",
+  components: { loading },
   data () {
     return {
+      loadingflag: true,
       articleObj: {},
       centerDialogVisible: false,
       bct_jump_show: false,
-      balance: 0,
+      balance: "",
       votenum: 1,
       min: 1,
       max: 100,
@@ -217,10 +218,10 @@ export default {
         }, 2200);
         Interval.stop(that);
         let res = await getReward();
-        console.log(res);
-        if (res.code == 1) {
+        //console.log("reward res", res);
+        if (res.data.code == 1) {
           this.imgurl = "bct_c.png";
-          var mes = "there are no rewards left";
+          var mes = "there are no budget left";
           var options = {
             title: "Aha ~",
             message: h("i", { style: "color: teal;font-weight:700" }, mes),
@@ -230,6 +231,10 @@ export default {
         } else {
           this.imgurl = "bct_o.gif";
           Interval.run(this);
+        }
+        let res1 = await getBalance();
+        if (res1.status == 200 && res1.data) {
+          this.balance = res1.data.data
         }
       }
     },
@@ -243,8 +248,9 @@ export default {
           {
             confirmButtonText: 'OK',
             cancelButtonText: 'Cancel',
-            type: 'warning',
             draggable: true,
+            customClass: 'msgbox',
+            customStyle: "color:red"
           }
         ).then((action) => {
           if (action === 'confirm') {
@@ -266,6 +272,11 @@ export default {
       this.imgurl = "bct_c.png";
       this.$router.push("/login");
     }
+    // get balance
+    let res1 = await getBalance();
+    if (res1.status == 200 && res1.data) {
+      this.balance = res1.data.data
+    }
     // 页面一打开就去加载文章详情。
     let res = await articleDetail({
       art_id: this.$route.params.art_id,
@@ -274,6 +285,7 @@ export default {
     this.articleObj.createdAt = formatTime(this.articleObj.createdAt)
     document.title = this.articleObj["title"] + " ｜ ReadON ";
     console.log(this.articleObj)
+    this.loadingflag = false
   },
   computed: {
     component () {

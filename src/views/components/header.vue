@@ -49,7 +49,6 @@ export default {
 
   methods: {
     logout () {
-      console.log("logout")
       TOKEN.logout()
       this.$router.push("/")
       this.islogin = false
@@ -115,6 +114,9 @@ export default {
   .title {
     padding-left: 3%;
     font-size: 2em;
+  }
+  .market {
+    font-size: 1em;
   }
   /deep/.el-dropdown {
     padding-right: 1%;

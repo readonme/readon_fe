@@ -53,11 +53,11 @@
 }
 
 .icon_jump {
-  width: 3em;
+  width: 4em;
   position: fixed;
   z-index: 15;
   right: 2.5em;
-  bottom: 8em;
+  bottom: 7em;
 }
 
 .meta .date i {
@@ -114,9 +114,23 @@ a[class^="share-network-"] span {
   margin-right: 1em !important;
 }
 
-.fa-thumbs-vote{
-  padding: 0 5px;
-  cursor: pointer;
+#wrapper {
+  position: fixed;
+  z-index: 15;
+  right: 3em;
+  bottom: 1em;
+  background-color: #563cb8;
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #f8f9fa;
+}
+
+
+@media only screen and (max-width: 700px) {
+  .fa-thumbs-vote {
+    padding: 0 5px;
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -161,15 +175,18 @@ a[class^="share-network-"] span {
     margin: 10px 10px 10px 0;
   }
 }
+
 @media only screen and (max-width: 500px) {
   .share {
     margin: 16px 0 !important;
     padding: 0;
   }
+
   .fa-lg {
     font-size: 1em;
   }
-  .social-area{
+
+  .social-area {
     font-size: 1.3em;
   }
 
@@ -177,15 +194,18 @@ a[class^="share-network-"] span {
     padding: 1.3em 0;
   }
 }
+
 @media only screen and (max-width: 400px) {
   .share {
     margin: 0px 0 !important;
     padding: 0;
   }
+
   .fa-lg {
     font-size: 1em;
   }
-  .social-area{
+
+  .social-area {
     font-size: 1.1em;
   }
 
@@ -200,10 +220,12 @@ a[class^="share-network-"] span {
     margin: 0px 0 !important;
     padding: 0;
   }
+
   .fa-lg {
     font-size: 0.9em;
   }
-  .social-area{
+
+  .social-area {
     font-size: 0.9em;
   }
 

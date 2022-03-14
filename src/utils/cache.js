@@ -20,7 +20,7 @@ var cache = {
    * @param expiredTimeMS  过期时间，单位ms
    */
   "set": function (key, value, expiredTimeMS) {
-    console.log("cache set: key=" + key + " value = " + value + " expiredTimeMS = " + expiredTimeMS)
+    //console.log("cache set: key=" + key + " value = " + value + " expiredTimeMS = " + expiredTimeMS)
     if ((expiredTimeMS == 0) || (expiredTimeMS == null)) {
       localStorage.setItem(key, value);
     }
@@ -42,11 +42,11 @@ var cache = {
     var curTime = new Date().getTime();
     var sum = Number(expiredStartTime) + Number(expiredTimeMS);
     if ((sum) > curTime) {
-      console.log("cache-缓存[" + key + "]存在！");
+      //console.log("cache-缓存[" + key + "]存在！");
       return JSON.parse(localStorage.getItem(key));
     }
     else {
-      console.log("cache-缓存[" + key + "]不存在！");
+      //console.log("cache-缓存[" + key + "]不存在！");
       cache.remove(key);
       return null;
     }

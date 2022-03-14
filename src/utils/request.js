@@ -20,7 +20,7 @@ let request = axios.create({
 request.interceptors.request.use(function (config) {
   var mytoken = TOKEN.getToken();
   config.headers.Authorization = mytoken && 'Bearer ' + mytoken;//每次首页里面的请求在发送后都会被拦截下来，自动加上一个token值。
-  //console.log("token", config)
+
   return config;
 }, function (error) {
   //(2) 对请求错误做些什么
