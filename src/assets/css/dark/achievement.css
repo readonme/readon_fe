@@ -1,0 +1,72 @@
+.achievement-page{
+    position: relative;
+    padding: 20px 10px;
+    font-size: 1.2rem;
+}
+
+.achievement-header{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+}
+
+.achievement-header-tip{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.achievement-header-title{
+    font-size: 1.2rem;
+}
+
+
+.achievement-header-image{
+    width: 35vw;
+    padding: 20px 0;
+}
+
+.achievement-header-count{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 10px 0 20px 0;
+}
+
+.achievement-header-reach-count{
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 3rem;
+}
+
+.achievement-header-split{
+    font-size: 1.2rem;
+    /* line-height:  1.2rem; */
+    padding: 0 10px;
+}
+.achievement-header-total-count{
+    font-size: 1.2rem;
+    /* line-height:  1.2rem; */
+}
+
+.achievement-content{
+    border-top: 2px solid white;
+
+}
+
+.achievement-c-title{
+    line-height: 3rem;
+    text-align: center;
+    font-weight: 500;
+   
+}
+
+.achievement-c-list{
+    display: flex;
+}
+
+.achievement-c-image{
+    width: 33%;
+}

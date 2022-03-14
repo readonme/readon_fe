@@ -71,11 +71,11 @@
           </div>
         </el-col>
         <el-col :span="8">
-          <div>
+          <a href="#/achievement">
             <img src="@/assets/img/mine/3.png"
                  class="oprimg" />
             <p>Achievements</p>
-          </div>
+          </a>
         </el-col>
       </el-row>
     </div>
