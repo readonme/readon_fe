@@ -15,6 +15,8 @@
         <img style="width: 5em"
              :src="require(`@/assets/img/detail/${imgurl}`)" />
       </ve-progress>
+      <div id="wrapper"
+           v-if="balance"> {{balance}} $</div>
 
       <img class="icon_jump"
            v-show="bct_jump_show"
@@ -79,7 +81,6 @@
                   {{ articleObj.readTime}}
                 </div>
               </div>
-
               <div class="row">
                 <div v-if="articleObj.sourceUrl"
                      class="meta"
@@ -135,7 +136,7 @@
 import loading from "../components/loading.vue";
 import { formatTime } from "@/utils/common_tools";
 import { articleDetail, articleLike, articleDisLike } from "@/api/article.js";
-import { getReward } from "@/api/mine.js";
+import { getBalance, getReward } from "@/api/mine.js";
 import { ElNotification } from "element-plus";
 import { h } from "vue";
 import { ElMessageBox, ElMessage } from 'element-plus'
@@ -151,7 +152,7 @@ export default {
       articleObj: {},
       centerDialogVisible: false,
       bct_jump_show: false,
-      balance: 0,
+      balance: "",
       votenum: 1,
       min: 1,
       max: 100,
@@ -212,7 +213,7 @@ export default {
         }, 2200);
         Interval.stop(that);
         let res = await getReward();
-        console.log("reward res", res);
+        //console.log("reward res", res);
         if (res.data.code == 1) {
           this.imgurl = "bct_c.png";
           var mes = "there are no budget left";
@@ -225,6 +226,10 @@ export default {
         } else {
           this.imgurl = "bct_o.gif";
           Interval.run(this);
+        }
+        let res1 = await getBalance();
+        if (res1.status == 200 && res1.data) {
+          this.balance = res1.data.data
         }
       }
     },
@@ -261,6 +266,11 @@ export default {
     } else {
       this.imgurl = "bct_c.png";
       this.$router.push("/login");
+    }
+    // get balance
+    let res1 = await getBalance();
+    if (res1.status == 200 && res1.data) {
+      this.balance = res1.data.data
     }
     // 页面一打开就去加载文章详情。
     let res = await articleDetail({

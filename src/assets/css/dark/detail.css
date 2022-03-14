@@ -53,11 +53,11 @@
 }
 
 .icon_jump {
-  width: 3em;
+  width: 4em;
   position: fixed;
   z-index: 15;
-  right: 3em;
-  bottom: 8em;
+  right: 2.5em;
+  bottom: 7em;
 }
 
 .meta .date i {
@@ -113,6 +113,18 @@ a[class^="share-network-"] span {
 .action li {
   margin-right: 1em !important;
 }
+
+#wrapper {
+  position: fixed;
+  z-index: 15;
+  right: 3em;
+  bottom: 1em;
+  background-color: #563cb8;
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #f8f9fa;
+}
+
 
 @media only screen and (max-width: 700px) {
   .share {

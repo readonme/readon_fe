@@ -68,12 +68,9 @@
                    href="#">My Topic</a>
               </div>
             </div>
-
           </section>
         </div>
-
       </div>
-
     </div>
     <!-- news-area Start -->
     <div class="pd-top-50 pd-bottom-30"
@@ -196,9 +193,6 @@ export default {
     let articleRes = await articleTopVoteList(params);
     this.toparticles = articleRes.data.data.slice(0, 4);
     this.loadingflag = false
-    //console.log("this.toparticles", articleRes)
-    //let articleRes2 = await articleList(params);
-    //this.articles = articleRes2.data.data;
 
     //this is hot topic static data for test
     this.hotTopicList = [{

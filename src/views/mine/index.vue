@@ -33,19 +33,19 @@
         <el-row>
           <el-col :span="8">
             <div class="">
-              <p>1000</p>
+              <p>{{balance}}</p>
               <p>$READ</p>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="">
-              <p>700</p>
+              <p>{{staked}}</p>
               <p>Staked</p>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="">
-              <p>300</p>
+              <p>{{ balance}}</p>
               <p>Available</p>
             </div>
           </el-col>
@@ -186,7 +186,7 @@
 
 <script> 
 
-import { userInfo, bindWallet, changeName, allAvatars, changeAvatar } from "@/api/mine.js";
+import { userInfo, bindWallet, changeName, allAvatars, changeAvatar, getBalance } from "@/api/mine.js";
 import Wallet from "../components/wallet.vue";
 import TOKEN from "@/utils/token.js";
 export default {
@@ -199,7 +199,9 @@ export default {
       originWallet: "",
       avatars: [],
       showAvaBox: false,
-      isConnectWallet: false
+      isConnectWallet: false,
+      balance: 0,
+      staked: 300
     };
   },
   mounted () {
@@ -221,6 +223,12 @@ export default {
         document.getElementsByClassName("swv-button")[0].children[1].innerHTML = this.originWallet.substring(0, 4) + ".." + this.originWallet.substring(length - 4, length)
       }
     }
+    let res1 = await getBalance();
+    if (res1.status == 200 && res1.data) {
+      this.balance = res1.data.data
+      console.log(res1.data.data)
+    }
+
   },
   methods: {
     async selectAvatars () {
