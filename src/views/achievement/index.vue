@@ -1,7 +1,7 @@
 <template>
   <div class="achievement-page">
     <div class="achievement-header">
-      <div class="achievement-header-tip" @click="sum(1, 1)">
+      <div class="achievement-header-tip" >
         Mint Buzz Now!
       </div>
       <img
@@ -188,10 +188,7 @@ export default {
   },
 
   methods: {
-    sum(a, b) {
-      alert(a + b);
-      return a + b;
-    },
+
   },
 };
 </script>
