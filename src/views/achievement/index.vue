@@ -1,9 +1,7 @@
 <template>
   <div class="achievement-page">
     <div class="achievement-header">
-      <div class="achievement-header-tip" >
-        Mint Buzz Now!
-      </div>
+      <div class="achievement-header-tip">Mint Buzz Now!</div>
       <img
         src="@/assets/img/achievement/mintnft.png"
         class="achievement-header-image"
@@ -67,22 +65,43 @@
           />
         </div>
         <div class="achievement-c">
-          <img
-            src="@/assets/img/achievement/7DAYS.png"
-            class="achievement-c-image"
-          />
+          <template v-if="false">
+            <img
+              src="@/assets/img/achievement/7DAYS.png"
+              class="achievement-c-image"
+          /></template>
+          <template v-else>
+            <img
+              src="@/assets/img/achievement/grey/7DAYS.png"
+              class="achievement-c-image"
+            />
+          </template>
         </div>
         <div class="achievement-c">
-          <img
-            src="@/assets/img/achievement/14DAYS.png"
-            class="achievement-c-image"
-          />
+          <template v-if="false">
+            <img
+              src="@/assets/img/achievement/14DAYS.png"
+              class="achievement-c-image"
+          /></template>
+          <template v-else>
+            <img
+              src="@/assets/img/achievement/grey/14DAYS.png"
+              class="achievement-c-image"
+            />
+          </template>
         </div>
         <div class="achievement-c">
-          <img
-            src="@/assets/img/achievement/30DAYS.png"
-            class="achievement-c-image"
-          />
+          <template v-if="false">
+            <img
+              src="@/assets/img/achievement/30DAYS.png"
+              class="achievement-c-image"
+          /></template>
+          <template v-else>
+            <img
+              src="@/assets/img/achievement/grey/30DAYS.png"
+              class="achievement-c-image"
+            />
+          </template>
         </div>
       </div>
     </div>
@@ -187,9 +206,7 @@ export default {
     return {};
   },
 
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 <style scoped src="../../assets/css/dark/achievement.css"></style>
