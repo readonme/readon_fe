@@ -2215,17 +2215,17 @@ ul {
   background: #07B404;
 }
 
-.hottopic-wapper .section-content{
+.hottopic-wapper .section-content {
   background-color: rgb(37, 37, 37);
   border-radius: 5px;
   padding: 20px 10px;
 }
 
-.hottopic-wapper{
+.hottopic-wapper {
   margin-bottom: 50px;
 }
 
-.widget-hottopic{
+.widget-hottopic {
   padding: 0;
   margin: 0;
   margin-bottom: 30px;
@@ -2241,7 +2241,7 @@ ul {
   display: flex;
 }
 
-.widget-hottopic li .hottopic-title{
+.widget-hottopic li .hottopic-title {
   width: 100px;
 
   overflow: hidden;
@@ -2251,11 +2251,11 @@ ul {
 }
 
 
-.widget-hottopic li .hottopic-info{
+.widget-hottopic li .hottopic-info {
   flex: 1;
 }
 
-.widget-hottopic li .hottopic-perc{
+.widget-hottopic li .hottopic-perc {
   height: 20px;
   display: block;
   background-color: rgb(1, 237, 255);
@@ -2263,9 +2263,10 @@ ul {
   width: 0;
 }
 
-.hottopic-wapper .my-hottopic-btn{
+.hottopic-wapper .my-hottopic-btn {
   padding-bottom: 10px;
 }
+
 .side-category .category-accordion {
   margin-top: 20px;
 }

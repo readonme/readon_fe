@@ -56,7 +56,7 @@
   width: 3em;
   position: fixed;
   z-index: 15;
-  right: 2.5em;
+  right: 3em;
   bottom: 8em;
 }
 
@@ -179,12 +179,4 @@ a[class^="share-network-"] span {
 .blog-share-area {
   background-color: rgba(249, 249, 251, 1);
   color: rgba(112, 112, 112, 1);
-}
-
-/deep/.el-message-box {
-  background-color: rgba(0, 0, 0, 1) !important;
-}
-
-/deep/.el-message-box__title {
-  color: #edeff3;
 }

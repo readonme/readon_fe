@@ -1,6 +1,6 @@
 <template>
-  <div v-loading="loading"
-       element-loading-text="doing">
+  <loading v-if="loadingflag" />
+  <div>
     <div class="fixed_div">
       <ve-progress :is="component"
                    :progress="progress"
@@ -132,22 +132,22 @@
   </div>
 </template>
 <script>
+import loading from "../components/loading.vue";
 import { formatTime } from "@/utils/common_tools";
 import { articleDetail, articleLike, articleDisLike } from "@/api/article.js";
 import { getReward } from "@/api/mine.js";
 import { ElNotification } from "element-plus";
 import { h } from "vue";
 import { ElMessageBox, ElMessage } from 'element-plus'
-
-//import { Message } from 'element-ui';
-import { ElLoading } from "element-plus";
 import Interval from "@/utils/interval";
 import TOKEN from "@/utils/token.js";
 import CACHE from "@/utils/cache.js";
 export default {
   name: "Detail",
+  components: { loading },
   data () {
     return {
+      loadingflag: true,
       articleObj: {},
       centerDialogVisible: false,
       bct_jump_show: false,
@@ -212,10 +212,10 @@ export default {
         }, 2200);
         Interval.stop(that);
         let res = await getReward();
-        console.log(res);
-        if (res.code == 1) {
+        console.log("reward res", res);
+        if (res.data.code == 1) {
           this.imgurl = "bct_c.png";
-          var mes = "there are no rewards left";
+          var mes = "there are no budget left";
           var options = {
             title: "Aha ~",
             message: h("i", { style: "color: teal;font-weight:700" }, mes),
@@ -238,8 +238,9 @@ export default {
           {
             confirmButtonText: 'OK',
             cancelButtonText: 'Cancel',
-            type: 'warning',
             draggable: true,
+            customClass: 'msgbox',
+            customStyle: "color:red"
           }
         ).then((action) => {
           if (action === 'confirm') {
@@ -269,6 +270,7 @@ export default {
     this.articleObj.createdAt = formatTime(this.articleObj.createdAt)
     document.title = this.articleObj["title"] + " ｜ ReadON ";
     console.log(this.articleObj)
+    this.loadingflag = false
   },
   computed: {
     component () {

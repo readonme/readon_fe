@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-if="loadingflag" />
     <div class="top-story-area pd-top-50 pd-bottom-30">
       <div class="container">
         <div class="section-title">
@@ -46,32 +47,32 @@
       </div>
     </div>
     <div class="hottopic-wapper-out container">
-       <div class="row">
-         <div class="col-lg-8">
-            <section class="hottopic-wapper">
-              <div class="section-title">
-                <h4 class="title">Hot Topic</h4>
-              </div>
-              <div class="section-content">
-                <ul class="widget widget-hottopic">
-                    <li v-for="item in hotTopicList">
-                      <div class="hottopic-title">#{{item.topicName}}</div>
-                      <div class="hottopic-info">
-                        <span class="hottopic-perc" :style='{paddingRight:item.topicHotPercent}'></span>
-                      </div>
-                    </li>
-                  </ul>
-                  <div class="my-hottopic-btn">
-                    <a class="see-all-btn dark-see-all-btn"
-                    href="#">My Topic</a>
+      <div class="row">
+        <div class="col-lg-8">
+          <section class="hottopic-wapper">
+            <div class="section-title">
+              <h4 class="title">Hot Topic</h4>
+            </div>
+            <div class="section-content">
+              <ul class="widget widget-hottopic">
+                <li v-for="item in hotTopicList">
+                  <div class="hottopic-title">#{{item.topicName}}</div>
+                  <div class="hottopic-info">
+                    <span class="hottopic-perc"
+                          :style='{paddingRight:item.topicHotPercent}'></span>
                   </div>
+                </li>
+              </ul>
+              <div class="my-hottopic-btn">
+                <a class="see-all-btn dark-see-all-btn"
+                   href="#">My Topic</a>
               </div>
+            </div>
 
+          </section>
+        </div>
 
-            </section>
-         </div>
-
-       </div>
+      </div>
 
     </div>
     <!-- news-area Start -->
@@ -173,11 +174,13 @@
   </div>
 </template>
 <script> 
+import loading from "../components/loading.vue";
 import { cateList, articleList, articleTopVoteList } from "@/api/article.js";
 import moment from 'moment';
 export default {
   name: "Home",
   components: {
+    loading
   },
   async created () {
     var params = { "page": 1 }
@@ -192,8 +195,9 @@ export default {
     this.cateObjList = cateRes.data.data;
     let articleRes = await articleTopVoteList(params);
     this.toparticles = articleRes.data.data.slice(0, 4);
+    this.loadingflag = false
     //console.log("this.toparticles", articleRes)
-    let articleRes2 = await articleList(params);
+    //let articleRes2 = await articleList(params);
     //this.articles = articleRes2.data.data;
 
     //this is hot topic static data for test
@@ -202,22 +206,16 @@ export default {
       topicHotPercent: "100%"
     },
     {
-
       topicName: 'Sport',
       topicHotPercent: "90%"
-
     },
     {
-
       topicName: 'LifeStyle',
       topicHotPercent: "80%"
-
     },
     {
-
       topicName: 'Fun',
       topicHotPercent: "70%"
-
     },
     {
 
@@ -234,6 +232,7 @@ export default {
       hotTopicList: [],
       loading: false,
       page: 1,
+      loadingflag: true,
       loadMsg: "Load More",
     };
   },

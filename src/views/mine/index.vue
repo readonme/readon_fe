@@ -219,8 +219,6 @@ export default {
         this.showBal = true;
         this.isConnectWallet = true
         document.getElementsByClassName("swv-button")[0].children[1].innerHTML = this.originWallet.substring(0, 4) + ".." + this.originWallet.substring(length - 4, length)
-
-
       }
     }
   },
