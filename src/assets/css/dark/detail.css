@@ -131,140 +131,140 @@ a[class^="share-network-"] span {
     padding: 0 5px;
     cursor: pointer;
   }
+}
 
-  @media only screen and (max-width: 800px) {
-    .share {
-      margin: 20px 0 !important;
-      padding: 0;
-    }
-
-    .share li:first {
-      padding-left: 0;
-    }
-
-    .share li {
-      margin-right: 10px;
-    }
-
-    .blog-details-area {
-      padding-bottom: 0;
-    }
-
-    .blog-details-wrap .blog-share-area .social-area li:first-child {
-      margin-left: 0.2em;
-    }
-
-    .action li {
-      margin-right: 0.2em !important;
-    }
-
-    .blog-share-area {
-      padding: 2em 0;
-    }
-
-    .social-area {
-      display: inline;
-    }
-
-    .fa-lg {
-      font-size: 1em;
-    }
-
-    a[class^="share-network-"] {
-      margin: 10px 10px 10px 0;
-    }
+@media only screen and (max-width: 800px) {
+  .share {
+    margin: 20px 0 !important;
+    padding: 0;
   }
 
-  @media only screen and (max-width: 500px) {
-    .share {
-      margin: 16px 0 !important;
-      padding: 0;
-    }
-
-    .fa-lg {
-      font-size: 1em;
-    }
-
-    .social-area {
-      font-size: 1.3em;
-    }
-
-    .blog-share-area {
-      padding: 1.3em 0;
-    }
+  .share li:first {
+    padding-left: 0;
   }
 
-  @media only screen and (max-width: 400px) {
-    .share {
-      margin: 0px 0 !important;
-      padding: 0;
-    }
-
-    .fa-lg {
-      font-size: 1em;
-    }
-
-    .social-area {
-      font-size: 1.1em;
-    }
-
-    .blog-share-area {
-      padding: 1.1em 0;
-    }
-
+  .share li {
+    margin-right: 10px;
   }
 
-  @media only screen and (max-width: 370px) {
-    .share {
-      margin: 0px 0 !important;
-      padding: 0;
-    }
-
-    .fa-lg {
-      font-size: 0.9em;
-    }
-
-    .social-area {
-      font-size: 0.9em;
-    }
-
-    .blog-share-area {
-      padding: 1.1em 0;
-    }
-
+  .blog-details-area {
+    padding-bottom: 0;
   }
 
-  /* dark */
-  /deep/ h1,
-  /deep/ h2,
-  /deep/ h3,
-  /deep/ h4,
-  /deep/ h5,
-  /deep/ h6,
-  /deep/ p {
-    color: white !important;
+  .blog-details-wrap .blog-share-area .social-area li:first-child {
+    margin-left: 0.2em;
   }
 
-  /deep/ img {
-    max-width: 95%;
-  }
-
-  /deep/.dark-blog>div {
-    background-color: black !important;
+  .action li {
+    margin-right: 0.2em !important;
   }
 
   .blog-share-area {
-    background-color: rgba(249, 249, 251, 1);
-    color: rgba(112, 112, 112, 1);
-    <<<<<<< HEAD=======display: flex;
-    justify-content: space-between;
+    padding: 2em 0;
   }
 
-  /deep/.el-message-box {
-    background-color: rgba(0, 0, 0, 1) !important;
+  .social-area {
+    display: inline;
   }
 
-  /deep/.el-message-box__title {
-    color: #edeff3;
-    >>>>>>>071e43240f8f48cf64e20231bddc63b6e46a2684
+  .fa-lg {
+    font-size: 1em;
   }
+
+  a[class^="share-network-"] {
+    margin: 10px 10px 10px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .share {
+    margin: 16px 0 !important;
+    padding: 0;
+  }
+
+  .fa-lg {
+    font-size: 1em;
+  }
+
+  .social-area {
+    font-size: 1.3em;
+  }
+
+  .blog-share-area {
+    padding: 1.3em 0;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .share {
+    margin: 0px 0 !important;
+    padding: 0;
+  }
+
+  .fa-lg {
+    font-size: 1em;
+  }
+
+  .social-area {
+    font-size: 1.1em;
+  }
+
+  .blog-share-area {
+    padding: 1.1em 0;
+  }
+
+}
+
+@media only screen and (max-width: 370px) {
+  .share {
+    margin: 0px 0 !important;
+    padding: 0;
+  }
+
+  .fa-lg {
+    font-size: 0.9em;
+  }
+
+  .social-area {
+    font-size: 0.9em;
+  }
+
+  .blog-share-area {
+    padding: 1.1em 0;
+  }
+
+}
+
+/* dark */
+/deep/ h1,
+/deep/ h2,
+/deep/ h3,
+/deep/ h4,
+/deep/ h5,
+/deep/ h6,
+/deep/ p {
+  color: white !important;
+}
+
+/deep/ img {
+  max-width: 95%;
+}
+
+/deep/.dark-blog>div {
+  background-color: black !important;
+}
+
+.blog-share-area {
+  background-color: rgba(249, 249, 251, 1);
+  color: rgba(112, 112, 112, 1);
+  display: flex;
+  justify-content: space-between;
+}
+
+/deep/.el-message-box {
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+
+/deep/.el-message-box__title {
+  color: #edeff3;
+}
