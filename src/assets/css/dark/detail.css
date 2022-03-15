@@ -11,7 +11,7 @@
 
 .action {
   float: left;
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 .action li {
@@ -53,11 +53,11 @@
 }
 
 .icon_jump {
-  width: 3em;
+  width: 4em;
   position: fixed;
   z-index: 15;
   right: 2.5em;
-  bottom: 8em;
+  bottom: 7em;
 }
 
 .meta .date i {
@@ -114,7 +114,26 @@ a[class^="share-network-"] span {
   margin-right: 1em !important;
 }
 
+#wrapper {
+  position: fixed;
+  z-index: 15;
+  right: 3em;
+  bottom: 1em;
+  background-color: #563cb8;
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #f8f9fa;
+}
+
+
 @media only screen and (max-width: 700px) {
+  .fa-thumbs-vote {
+    padding: 0 5px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 800px) {
   .share {
     margin: 20px 0 !important;
     padding: 0;
@@ -155,9 +174,64 @@ a[class^="share-network-"] span {
   a[class^="share-network-"] {
     margin: 10px 10px 10px 0;
   }
+}
 
+@media only screen and (max-width: 500px) {
+  .share {
+    margin: 16px 0 !important;
+    padding: 0;
+  }
 
+  .fa-lg {
+    font-size: 1em;
+  }
 
+  .social-area {
+    font-size: 1.3em;
+  }
+
+  .blog-share-area {
+    padding: 1.3em 0;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .share {
+    margin: 0px 0 !important;
+    padding: 0;
+  }
+
+  .fa-lg {
+    font-size: 1em;
+  }
+
+  .social-area {
+    font-size: 1.1em;
+  }
+
+  .blog-share-area {
+    padding: 1.1em 0;
+  }
+
+}
+
+@media only screen and (max-width: 370px) {
+  .share {
+    margin: 0px 0 !important;
+    padding: 0;
+  }
+
+  .fa-lg {
+    font-size: 0.9em;
+  }
+
+  .social-area {
+    font-size: 0.9em;
+  }
+
+  .blog-share-area {
+    padding: 1.1em 0;
+  }
 
 }
 
@@ -183,4 +257,14 @@ a[class^="share-network-"] span {
 .blog-share-area {
   background-color: rgba(249, 249, 251, 1);
   color: rgba(112, 112, 112, 1);
+  display: flex;
+  justify-content: space-between;
+}
+
+/deep/.el-message-box {
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+
+/deep/.el-message-box__title {
+  color: #edeff3;
 }

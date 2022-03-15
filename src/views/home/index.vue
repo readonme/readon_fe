@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-if="loadingflag" />
     <div class="top-story-area pd-top-50 pd-bottom-30">
       <div class="container">
         <div class="section-title">
@@ -42,6 +43,32 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="hottopic-wapper-out container">
+      <div class="row">
+        <div class="col-lg-8">
+          <section class="hottopic-wapper">
+            <div class="section-title">
+              <h4 class="title">Hot Topic</h4>
+            </div>
+            <div class="section-content">
+              <ul class="widget widget-hottopic">
+                <li v-for="item in hotTopicList">
+                  <div class="hottopic-title">#{{item.topicName}}</div>
+                  <div class="hottopic-info">
+                    <span class="hottopic-perc"
+                          :style='{paddingRight:item.topicHotPercent}'></span>
+                  </div>
+                </li>
+              </ul>
+              <div class="my-hottopic-btn">
+                <a class="see-all-btn dark-see-all-btn"
+                   href="#">My Topic</a>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -98,25 +125,25 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <section class="hottopic-wapper">
+            <section class="hottopic-wapper hottopic-wapper-slide">
               <div class="section-title">
                 <h4 class="title">Hot Topic</h4>
               </div>
               <div class="section-content">
                 <ul class="widget widget-hottopic">
-                    <li v-for="item in hotTopicList">
-                      <div class="hottopic-title">{{item.topicName}}</div>
-                      <div class="hottopic-info">
-                        <span class="hottopic-perc" :style='{paddingRight:item.topicHotPercent}'></span>
-                      </div>
-                    </li>
-                  </ul>
-                  <div class="my-hottopic-btn">
-                    <a class="see-all-btn dark-see-all-btn"
-                    href="#">My Topic</a>
-                  </div>
+                  <li v-for="item in hotTopicList">
+                    <div class="hottopic-title">#{{item.topicName}}</div>
+                    <div class="hottopic-info">
+                      <span class="hottopic-perc"
+                            :style='{paddingRight:item.topicHotPercent}'></span>
+                    </div>
+                  </li>
+                </ul>
+                <div class="my-hottopic-btn">
+                  <a class="see-all-btn dark-see-all-btn"
+                     href="#">My Topic</a>
+                </div>
               </div>
- 
 
             </section>
             <section class="categories-wapper">
@@ -126,9 +153,9 @@
               <ul class="widget widget-categories">
                 <li v-for="item in cateObjList">
                   <div class="thumb"><img :src="item.memo.img"
-                        alt="img" /></div>
+                         alt="img" /></div>
                   <a :href="'#/category/' + item.id"
-                    target="_blank">
+                     target="_blank">
                     {{item.title}}
                   </a>
                 </li>
@@ -144,11 +171,13 @@
   </div>
 </template>
 <script> 
+import loading from "../components/loading.vue";
 import { cateList, articleList, articleTopVoteList } from "@/api/article.js";
 import moment from 'moment';
 export default {
   name: "Home",
   components: {
+    loading
   },
   async created () {
     var params = { "page": 1 }
@@ -163,38 +192,29 @@ export default {
     this.cateObjList = cateRes.data.data;
     let articleRes = await articleTopVoteList(params);
     this.toparticles = articleRes.data.data.slice(0, 4);
-    //console.log("this.toparticles", articleRes)
-    let articleRes2 = await articleList(params);
-    //this.articles = articleRes2.data.data;
+    this.loadingflag = false
 
     //this is hot topic static data for test
     this.hotTopicList = [{
-      topicName:'Fassion',
-      topicHotPercent:"100%"
-
+      topicName: 'Fassion',
+      topicHotPercent: "100%"
     },
     {
-    
-      topicName:'Sport',
-      topicHotPercent:"90%"
-
+      topicName: 'Sport',
+      topicHotPercent: "90%"
     },
     {
-    
-      topicName:'LifeStyle',
-      topicHotPercent:"80%"
-
+      topicName: 'LifeStyle',
+      topicHotPercent: "80%"
     },
     {
-    
-      topicName:'Fun',
-      topicHotPercent:"70%"
-
+      topicName: 'Fun',
+      topicHotPercent: "70%"
     },
     {
-    
-      topicName:'News',
-      topicHotPercent:"40%"
+
+      topicName: 'News',
+      topicHotPercent: "40%"
 
     }]
   },
@@ -203,9 +223,10 @@ export default {
       toparticles: [],
       articles: [],
       cateObjList: [],
-      hotTopicList:[],
+      hotTopicList: [],
       loading: false,
       page: 1,
+      loadingflag: true,
       loadMsg: "Load More",
     };
   },
@@ -235,7 +256,7 @@ export default {
       } finally {
       }
     },
-    formatTime(time){
+    formatTime (time) {
       return time && moment(time).format('YYYY-MM-DD hh:mm') || time
     }
   },

@@ -1,15 +1,41 @@
 import request from '@/utils/request.js'
 const host = "http://ec2-54-178-107-66.ap-northeast-1.compute.amazonaws.com:9958"
 
-export function userInfo() {
+export function userInfo () {
   return request({
     url: host + "/api_v2/auth/me",
     method: "get"
   })
 }
+// change name 
+export function changeName (data) {
+  var res = request({
+    url: host + "/api_v2/auth/change_name",
+    method: "post",
+    data
+  })
+  return res
+}
+// get  all_avatars
+export function allAvatars () {
+  return request({
+    url: host + "/api_v2/auth/all_avatars",
+    method: "get"
+  })
+}
+
+// change avatar 
+export function changeAvatar (data) {
+  var res = request({
+    url: host + "/api_v2/auth/change_avatar",
+    method: "post",
+    data
+  })
+  return res
+}
 
 //  绑定钱包  
-export function bindWallet(data) {
+export function bindWallet (data) {
   var res = request({
     url: host + "/api_v2/auth/connectwallet",
     method: "post",
@@ -19,13 +45,24 @@ export function bindWallet(data) {
 }
 
 //获取奖励
-export function getReward() {
+export function getReward () {
   var res = request({
     url: host + "/api_v2/auth/get_reward",
     method: "post"
   })
   return res
 }
+
+//get balnae
+export function getBalance () {
+  return request({
+    url: host + "/api_v2/auth/get_balance",
+    method: "get"
+  })
+}
+
+
+
 // // 获取stake列表
 // // export function stakeList(params) {
 // //     return request({
