@@ -30,7 +30,7 @@
               <div class="post-details">
                 <div class="meta">
                   <div class="date">
-                    <i class="fa fa-clock-o"></i>
+                    <i class="fa fa-clock-o" style="color: #7c7577;"></i>
                     {{ formatTime(item.createdAt) }}
                   </div>
                 </div>

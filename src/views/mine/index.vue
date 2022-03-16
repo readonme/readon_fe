@@ -1,51 +1,61 @@
 <template>
   <div class="pd-top-50 pd-bottom-50 main">
-    <!-- myheader -->
-
     <!-- Avatars -->
-    <div class="avatarsbox"
-         v-show="showAvaBox">
+    <el-dialog
+      v-model="showAvaBox"
+      title="choose one avatar you like"
+      draggable
+    >
       <el-row>
-        <el-col :span="4"
-                v-for="item in avatars">
-          <img :src="item.url"
-               class="avatarimg"
-               @click="submitAvatar(item.id,item.url)" />
+        <el-col :span="4" v-for="item in avatars">
+          <img
+            :src="item.url"
+            class="avatarimg"
+            @click="submitAvatar(item.id, item.url)"
+          />
         </el-col>
       </el-row>
-    </div>
+    </el-dialog>
+    <!-- myheader -->
     <div class="header">
-      <img :src=userObj.headimgurl
-           border="2"
-           class="myheadimg"
-           @click="selectAvatars" />
-      <p class="myname"><span contenteditable="false"
-              id="nickname"
-              @blur="editName()">{{ userObj.name }}</span>
-        <i class="fa fa-pencil"
-           style="margin-left: 0.5em;"
-           aria-hidden="true"
-           @click="enableEdit()"></i>
+      <div
+        style="position: relative; width: 7em; height: 7em; margin: 0 auto"
+        @click="selectAvatars"
+      >
+        <img :src="userObj.headimgurl" border="2" class="myheadimg" /><i
+          class="editicon fa fa-pencil-square-o"
+          aria-hidden="true"
+        ></i>
+      </div>
+      <p class="myname">
+        <span contenteditable="false" id="nickname" :class="{'editnamespan':editAicon}"  @blur="editName()">{{
+          userObj.name
+        }}</span>
+        <i
+          class="fa fa-pencil"
+          style="margin-left: 0.5em"
+          aria-hidden="true"
+          @click="enableEdit()"
+        ></i>
       </p>
       <Wallet />
-      <div class="mybal box"
-           v-show="showBal">
+      <div class="mybal box" v-show="showBal">
         <el-row>
           <el-col :span="8">
             <div class="">
-              <p>{{balance}}</p>
+              <p>{{ balance }}</p>
               <p>$READ</p>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="">
-              <p>{{staked}}</p>
+              <p>{{ staked }}</p>
               <p>Staked</p>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="">
-              <p>{{ balance}}</p>
+              <p>{{ balance }}</p>
               <p>Available</p>
             </div>
           </el-col>
@@ -58,22 +68,19 @@
       <el-row>
         <el-col :span="8">
           <a href="#/inviter">
-            <img src="@/assets/img/mine/1.png"
-                 class="oprimg" />
+            <img src="@/assets/img/mine/1.png" class="oprimg" />
             <p>Invite friends</p>
           </a>
         </el-col>
         <el-col :span="8">
           <div>
-            <img src="@/assets/img/mine/2.png"
-                 class="oprimg" />
+            <img src="@/assets/img/mine/2.png" class="oprimg" />
             <p>My Earning</p>
           </div>
         </el-col>
         <el-col :span="8">
           <a href="#/achievement">
-            <img src="@/assets/img/mine/3.png"
-                 class="oprimg" />
+            <img src="@/assets/img/mine/3.png" class="oprimg" />
             <p>Achievements</p>
           </a>
         </el-col>
@@ -83,47 +90,36 @@
     <!-- nft -->
     <div class="box">
       <div class="box-header">
-        <span class="task-head">Nucleus</span><span class="view-more">View More</span>
+        <span class="task-head">Nucleus</span
+        ><span class="view-more">View More</span>
       </div>
       <el-row>
         <el-col :span="8">
           <div class="nftbox">
-            <img src="@/assets/img/mine/nft1.png"
-                 class="nftimg" />
-            <p>Fission</p>
-            <p>#1001</p>
+            <img src="@/assets/img/mine/nft2.png" class="nftimg" />
+            <p>FISSION</p>
+            <p>#10003</p>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="nftbox">
-            <img src="@/assets/img/mine/nft2.png"
-                 class="nftimg" />
-            <p>Fission</p>
-            <p>#1001</p>
+            <img src="@/assets/img/mine/nft3.png" class="nftimg" />
+            <p>FISSION</p>
+            <p>#10012</p>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="nftbox">
-            <img src="@/assets/img/mine/nft3.png"
-                 class="nftimg" />
-            <p>Fission</p>
-            <p>#1001</p>
+            <img src="@/assets/img/mine/nft4.png" class="nftimg" />
+            <p>STEAM</p>
+            <p>#20031</p>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="nftbox">
-            <img src="@/assets/img/mine/nft4.png"
-                 class="nftimg" />
-            <p>Fission</p>
-            <p>#1001</p>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div class="nftbox">
-            <img src="@/assets/img/mine/nft5.png"
-                 class="nftimg" />
-            <p>Fission</p>
-            <p>#1001</p>
+            <img src="@/assets/img/mine/nft5.png" class="nftimg" />
+            <p>BUZZ</p>
+            <p>#30041</p>
           </div>
         </el-col>
       </el-row>
@@ -131,13 +127,10 @@
 
     <!-- task -->
     <div class="box">
-      <div class="box-header"><span class="task-head">Earn Points</span></div>
-      <el-row v-if="!isConnectWallet">
-        <el-col :span="19"
-                class="task-cont">
-          <p class="task-cont-h1">
-            Take Your Wallet
-          </p>
+      <div class="box-header"><span class="task-head">Earn $Read</span></div>
+      <el-row>
+        <el-col :span="19" class="task-cont">
+          <p class="task-cont-h1">Take Your Wallet</p>
           <p>Connect your wallet, or create a new one to earn income</p>
         </el-col>
         <el-col :span="4">
@@ -145,11 +138,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="19"
-                class="task-cont">
-          <p class="task-cont-h1">
-            Start Reading To Earn
-          </p>
+        <el-col :span="19" class="task-cont">
+          <p class="task-cont-h1">Start Reading To Earn</p>
           <p>Read an article and get your first earnings!</p>
         </el-col>
         <el-col :span="4">
@@ -157,11 +147,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="19"
-                class="task-cont">
-          <p class="task-cont-h1">
-            See What Cryptocurrency Is
-          </p>
+        <el-col :span="19" class="task-cont">
+          <p class="task-cont-h1">See What Cryptocurrency Is</p>
           <p>Read three pieces of content related to cryptocurrency</p>
         </el-col>
         <el-col :span="4">
@@ -169,30 +156,55 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="19"
-                class="task-cont">
-          <p class="task-cont-h1">
-            Read Some Words Quietly
-          </p>
+        <el-col :span="19" class="task-cont">
+          <p class="task-cont-h1">Read Some Words Quietly</p>
           <p>Read a total of fifteen minutes of content</p>
         </el-col>
         <el-col :span="4">
           <p class="tip">3/15</p>
         </el-col>
       </el-row>
+
+      <el-row>
+        <el-col :span="19" class="task-cont">
+          <p class="task-cont-h1">Share With Your Friends</p>
+          <p>
+            Find a piece of content you like and share it with three friends
+          </p>
+        </el-col>
+        <el-col :span="4">
+          <p class="tip">0/3</p>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="19" class="task-cont">
+          <p class="task-cont-h1">Build A Reading Team</p>
+          <p>Invite a friend to join ReadON and read together</p>
+        </el-col>
+        <el-col :span="4">
+          <p class="tip">0/1</p>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
 
-<script> 
-
-import { userInfo, bindWallet, changeName, allAvatars, changeAvatar, getBalance } from "@/api/mine.js";
+<script>
+import {
+  userInfo,
+  bindWallet,
+  changeName,
+  allAvatars,
+  changeAvatar,
+  getBalance,
+} from "@/api/mine.js";
 import Wallet from "../components/wallet.vue";
 import TOKEN from "@/utils/token.js";
 export default {
   name: "Mine",
   components: { Wallet },
-  data () {
+  data() {
     return {
       userObj: {},
       showBal: false,
@@ -201,76 +213,87 @@ export default {
       showAvaBox: false,
       isConnectWallet: false,
       balance: 0,
-      staked: 300
+      staked: 300,
+      editAicon: false,
     };
   },
-  mounted () {
+  mounted() {
     this.connectwallet();
   },
-  async created () {
+  async created() {
     if (!TOKEN.checkLogin()) {
       this.$router.push("/login");
     }
-    let res = await userInfo();
+    let res = await userInfo(); 
     if (res.status == 200 && res.data) {
       this.userObj = res.data.data;
-      var principal = this.userObj.principal
+      var principal = this.userObj.principal;
       if (principal.length > 16) {
-        this.originWallet = principal
-        var length = this.originWallet.length
+        this.originWallet = principal;
+        var length = this.originWallet.length;
         this.showBal = true;
-        this.isConnectWallet = true
-        document.getElementsByClassName("swv-button")[0].children[1].innerHTML = this.originWallet.substring(0, 4) + ".." + this.originWallet.substring(length - 4, length)
+        this.isConnectWallet = true; 
+        var node = document.getElementsByClassName("swv-button")[0] || document.getElementsByClassName("swv-button")[0].children[1]
+        node.innerHTML =
+          this.originWallet.substring(0, 4) +
+          ".." +
+          this.originWallet.substring(length - 4, length);
       }
     }
     let res1 = await getBalance();
     if (res1.status == 200 && res1.data) {
-      this.balance = res1.data.data
-      console.log(res1.data.data)
+      this.balance = res1.data.data;
+      console.log(res1.data.data);
     }
-
   },
   methods: {
-    async selectAvatars () {
-      let res = await allAvatars()
-      this.avatars = res.data.data
-      this.showAvaBox = true
+    async selectAvatars() {
+      let res = await allAvatars();
+      this.avatars = res.data.data;
+      this.showAvaBox = true;
     },
-    async submitAvatar (id, url) {
-      console.log(id, url)
-      this.userObj.headimgurl = url
-      changeAvatar({ "avatar_id": id })
-      this.showAvaBox = false
+    async submitAvatar(id, url) {
+      console.log(id, url);
+      this.userObj.headimgurl = url;
+      changeAvatar({ avatar_id: id });
+      this.showAvaBox = false;
     },
-    enableEdit () {
-      document.getElementById("nickname").setAttribute("contenteditable", true)
+    enableEdit() {
+      var node = document.getElementById("nickname")
+      node.setAttribute("contenteditable", true);
+      this.editAicon = true;
     },
-    async editName () {
-      var newName = document.getElementById("nickname").innerHTML
-      await changeName({ "name": newName })
-      document.getElementById("nickname").setAttribute("contenteditable", false)
+    async editName() {
+      var newName = document.getElementById("nickname"); 
+      document
+        .getElementById("nickname")
+        .setAttribute("contenteditable", false);
+         this.editAicon = false;
+      await changeName({ name: newName.innerHTML });
+      
     },
-    connectwallet () {
+    connectwallet() {
       let _this = this;
       _this.timer = setInterval(async function () {
-        var addr = document.getElementsByClassName("swv-button")[0].getAttribute("title")
+        var node = document.getElementsByClassName("swv-button")[0] || document.getElementsByClassName("swv-button")[0].children[1]
+        var addr = node
+          .getAttribute("title");
         if (addr !== null && addr.length > 16 && addr !== this.originWallet) {
-          var data = { "principal": addr, "type": "SOL" }
-          var res = await bindWallet(data)
+          var data = { principal: addr, type: "SOL" };
+          var res = await bindWallet(data);
           if (res.status == 200) {
-            TOKEN.setWallet(addr)
+            TOKEN.setWallet(addr);
             _this.showBal = true;
-            clearInterval(_this.timer);// 满足条件时 停止计时
+            this.originWallet = addr;
+            //clearInterval(_this.timer); 
           }
         }
-      }, 2000)
-    }
-
-  }
+      }, 2000);
+    },
+  },
 };
 </script>
-
-<style scoped>
+<style lang="less" scoped>
 .main {
   background: url("../../assets/img/mine/bg.png");
   background-repeat: no-repeat;
@@ -292,6 +315,12 @@ img {
   margin: 0 auto;
   text-align: center;
 }
+.editicon {
+  display: none;
+  margin: -2.5em 1.5em;
+  position: absolute;
+  font-size: 2em;
+}
 .myheadimg {
   width: 7em;
   height: 7em;
@@ -299,10 +328,21 @@ img {
   background-color: #bebebe;
   padding: 0.5em;
   border: none;
+  cursor: pointer;
+  &:hover ~ .editicon {
+    display: block;
+  }
 }
 .myname {
   margin: 0.5em auto;
 }
+.editnamespan{
+border: 1px solid #e5e9f7;
+    padding: 0 1em;
+    border-radius: 0.4em;
+}
+
+
 .mybal {
   margin: 0 auto;
   text-align: center;

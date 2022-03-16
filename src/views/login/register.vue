@@ -4,8 +4,6 @@
     <div class="login"
          v-show="registertip">
       <div class="login-wrap">
-        <!--<img src="@/assets/img/logo_3.png"
-             class="logoimg" />-->
         <h1>Register</h1>
         <el-form :model="ruleForm"
                  status-icon
@@ -26,14 +24,16 @@
             <el-input type="password"
                       v-model="ruleForm.checkPass"
                       autocomplete="off"
-                      placeholder="Confirm Password"></el-input>
+                      placeholder="Confirm Password"></el-input>  
           </el-form-item>
+          <p style="font-size: 0.5em;text-align: left;color: #f48080;">*ReadON is not fully open yet, please get an early bird access in our community</p>
 
           <el-form-item prop="checkCode">
             <el-input class="forminput"
                       v-model="ruleForm.invitation"
-                      placeholder="Invite Code"></el-input>
+                      placeholder="Invite Code"></el-input> 
           </el-form-item>
+          
           <el-form-item>
             <el-button type="primary"
                        @click="signup()">Sign up</el-button>
@@ -92,10 +92,10 @@ export default {
     };
     return {
       ruleForm: {
-        password: "123",
-        checkPass: "123",
-        email: "admin@read.com",
-        invitation: "VA4AX62IL0"
+        password: "",
+        checkPass: "",
+        email: "",
+        invitation: ""
       },
 
       codetip: false,
@@ -124,8 +124,7 @@ export default {
       },
     };
   },
-  created () {
-    console.log("VUE_APP_TOKEN_NAME", TOKEN.VUE_APP_TOKEN_NAME)
+  created () {  
     this.ruleForm.invitation = this.$route.params.invitecode
   },
   methods: {

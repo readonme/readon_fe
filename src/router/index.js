@@ -30,10 +30,10 @@ export default [
     name: 'Login',
     path: '/login',
     component: require('@/views/login/login').default,
-  },
+  }, 
   {
     name: 'Register',
-    path: '/register',
+    path: '/register/:invitecode?',
     component: require('@/views/login/register').default,
   },
   {
