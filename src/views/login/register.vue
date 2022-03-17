@@ -97,7 +97,6 @@ export default {
         email: "",
         invitation: ""
       },
-
       codetip: false,
       successtip: false,
       registertip: true,

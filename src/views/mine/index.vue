@@ -67,19 +67,19 @@
     <div class="box">
       <el-row>
         <el-col :span="8">
-          <a href="#/inviter">
+          <a href="#/inviter" target="_blank">
             <img src="@/assets/img/mine/1.png" class="oprimg" />
             <p>Invite friends</p>
           </a>
         </el-col>
         <el-col :span="8">
-          <div>
+           <a href="#/earnings" target="_blank">
             <img src="@/assets/img/mine/2.png" class="oprimg" />
             <p>My Earning</p>
-          </div>
+          </a>
         </el-col>
         <el-col :span="8">
-          <a href="#/achievement">
+          <a href="#/achievement" target="_blank">
             <img src="@/assets/img/mine/3.png" class="oprimg" />
             <p>Achievements</p>
           </a>
@@ -89,6 +89,10 @@
 
     <!-- nft -->
     <div class="box">
+      <p style="padding:1em">You do not have Nucleus yet, unlock the achievement to mint Now.&nbsp;<a href="#/achievement" target="_blank"><i class="fa fa-hand-o-right" aria-hidden="true"></i> </a></p>
+      <p style="padding:1em">You can also buy Nucleus in the marketplace.&nbsp;<a href="http://market.readon.me/" target="_blank"><i class="fa fa-hand-o-right" aria-hidden="true"></i></a> </p>
+    </div>
+    <!--<div class="box">
       <div class="box-header">
         <span class="task-head">Nucleus</span
         ><span class="view-more">View More</span>
@@ -123,7 +127,7 @@
           </div>
         </el-col>
       </el-row>
-    </div>
+    </div>-->
 
     <!-- task -->
     <div class="box">

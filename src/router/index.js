@@ -19,14 +19,6 @@ export default [
     }
   },
   {
-    name: 'Achievement',
-    path: '/achievement',
-    component: require('@/views/achievement/index').default,
-    meta: {
-      title: ''
-    }
-  },
-  {
     name: 'Login',
     path: '/login',
     component: require('@/views/login/login').default,
@@ -45,6 +37,19 @@ export default [
     name: 'Mine',
     path: '/mine',
     component: require('@/views/mine/index').default,
+  },
+  {
+    name: 'Achievement',
+    path: '/achievement',
+    component: require('@/views/achievement/index').default,
+    meta: {
+      title: ''
+    }
+  },
+  {
+    name: 'Earnings',
+    path: '/earnings',
+    component: require('@/views/earning/index').default, 
   },
   {
     name: 'Inviter',

@@ -61,6 +61,14 @@ export function getBalance () {
   })
 }
 
+//get reward list 
+export function getRewardHistory () {
+  return request({
+    url: host + "/api_v2/auth/reward_history",
+    method: "get"
+  })
+}
+
 
 
 // // 获取stake列表
