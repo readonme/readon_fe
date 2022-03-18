@@ -51,7 +51,7 @@
         <div class="col-lg-8">
           <section class="hottopic-wapper">
             <div class="section-title">
-              <h4 class="title">Hot Topic</h4>
+              <h4 class="title">Hot Nucleus</h4>
             </div>
             <div class="section-content">
               <ul class="widget widget-hottopic">
@@ -127,7 +127,7 @@
           <div class="col-lg-4">
             <section class="hottopic-wapper hottopic-wapper-slide">
               <div class="section-title">
-                <h4 class="title">Hot Topic</h4>
+                <h4 class="title">Hot Nucleus</h4>
               </div>
               <div class="section-content">
                 <ul class="widget widget-hottopic">
