@@ -75,9 +75,8 @@
               </div>
               <div class="meta float-sm-right">
                 <div class="date">
-                  <i class="fa fa-bookmark-o"
-                     aria-hidden="true"
-                     style="color: #7c7577"></i>
+                  <i class="fa fa-eye" aria-hidden="true" 
+                     style="color: #7c7577"></i> 
                   {{ articleObj.readTime}}
                 </div>
               </div>

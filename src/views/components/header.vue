@@ -6,7 +6,7 @@
           v-show="!islogin"><a href="/#/login">Log in</a></span>
 
     <span class="title market"><a href="http://market.readon.me/"
-         target=_black>Market</a></span>
+         target=_black>Marketplace</a></span>
 
     <el-dropdown>
       <a href="/#/mine"><span class="el-dropdown-link info"
