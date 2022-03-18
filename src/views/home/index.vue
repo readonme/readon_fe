@@ -172,8 +172,10 @@
 </template>
 <script> 
 import loading from "../components/loading.vue";
+
+import { formatTime } from "@/utils/common_tools";
 import { cateList, articleList, articleTopVoteList } from "@/api/article.js";
-import moment from 'moment';
+
 export default {
   name: "Home",
   components: {
@@ -257,7 +259,7 @@ export default {
       }
     },
     formatTime (time) {
-      return time && moment(time).format('YYYY-MM-DD hh:mm') || time
+      return formatTime(time)
     }
   },
 };
