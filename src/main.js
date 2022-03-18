@@ -11,7 +11,7 @@ import "@/assets/css/style.css";
 import "@/assets/css/responsive.css";
 
 //element-ui 
-import ElementPlus from 'element-plus'
+// import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import veProgress from "vue-ellipse-progress";
 
@@ -61,7 +61,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 const app = createApp(App)
 app.use(router)
-app.use(ElementPlus)
+// app.use(ElementPlus)
 app.use(veProgress)
 app.use(VueSocialSharing)
 app.mount('#app')
