@@ -15,7 +15,7 @@
           <span>Code: </span><span class="font_blue">{{ code }}</span>
         </h5>
         <h5>
-          <span>Link: </span><span>{{ link }}</span>
+          <span>Link: </span><span>{{link}}</span>
         </h5>
         <el-button type="primary" class="share" @click="copy"
           >Share your link</el-button
@@ -27,7 +27,7 @@
           </div>
           <div>
             <h1 class="h1_num">0</h1>
-            <h5>Completed refereals</h5>
+            <h5>Completed referrals</h5>
           </div>
         </div>
       </div>

@@ -42,8 +42,7 @@ const wallets = [
 initWallet({ wallets, autoConnect: false });
 initWorkspace();
 
-// Routing.
-import TOKEN from "@/utils/token.js";
+// Routing. 
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 
