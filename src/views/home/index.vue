@@ -111,12 +111,12 @@
                     <!-- <p class="story_content">{{ item.short_content }}</p> -->
                   </a>
                   <div class="news_botton">
-                    <a class="tag tag-red" style="margin-top: 0.5em;"
+                    <a class="tag tag-red" style="margin-top: 0.5em;margin-right:0.5em;"
                        href="#" v-if="item.cate">{{ item.cate.title }} </a>
                         <span v-if="item.topicInfo"
                       v-for="topic in item.topicInfo"> 
 
-                     <span class="tag topictag" :style="{marginTop:'0.5em',marginLeft:'0.5em',background:topic.color}">{{ topic.displayName }} </span>
+                     <span class="tag topictag" :style="{marginTop:'0.5em',marginRight:'0.5em',background:topic.color}">{{ topic.displayName }} </span>
                      </span>
                   </div>
                 </div>
