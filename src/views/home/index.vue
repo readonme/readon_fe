@@ -23,9 +23,8 @@
                      alt="img"
                      class="voteimg" />
                 <a class="tag top-right tag-sky top_title"
-                   href="#">{{
-                  item.cate.title
-                }}</a>
+                   href="#" v-if="item.cate">
+                   {{item.cate.title }}</a>
               </div>
               <div class="post-details">
                 <div class="meta">
@@ -36,9 +35,7 @@
                 </div>
                 <h6 class="top_title">
                   <a :href="'#/detail/' + item.id"
-                     target="_blank">{{
-                    item.title
-                  }}</a>
+                     target="_blank">{{ item.title }}</a>
                 </h6>
               </div>
             </div>
@@ -114,8 +111,13 @@
                     <!-- <p class="story_content">{{ item.short_content }}</p> -->
                   </a>
                   <div class="news_botton">
-                    <a class="tag tag-red"
-                       href="#">{{ item.cate.title }} </a>
+                    <a class="tag tag-red" style="margin-top: 0.5em;"
+                       href="#" v-if="item.cate">{{ item.cate.title }} </a>
+                        <span v-if="item.topicInfo"
+                      v-for="topic in item.topicInfo"> 
+
+                     <span class="tag topictag" :style="{marginTop:'0.5em',marginLeft:'0.5em',background:topic.color}">{{ topic.displayName }} </span>
+                     </span>
                   </div>
                 </div>
               </div>
@@ -154,7 +156,7 @@
               </div>
               <ul class="widget widget-categories">
                 <li v-for="item in cateObjList">
-                  <div class="thumb"><img :src="item.memo.img"
+                  <div class="thumb" v-if="item.memo"><img :src="item.memo.img"
                          alt="img" /></div>
                   <a :href="'#/category/' + item.id"
                      target="_blank">
@@ -243,10 +245,10 @@ export default {
       this.requestData();
     },
     async requestData () {
-      try {
-        console.log("load more", this.page);
+      try { 
         this.loading = true;
         let articleRes2 = await articleList({ "page": this.page, "cid": this.cid });
+        console.log("articleRes2",articleRes2)
         if (articleRes2.data && articleRes2.data.code == 0) {
           let tmp = articleRes2.data.data.items;
           this.articles = this.articles.concat(tmp);

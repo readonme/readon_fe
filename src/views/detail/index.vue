@@ -15,8 +15,7 @@
         <img style="width: 5em"
              :src="require(`@/assets/img/detail/${imgurl}`)" />
       </ve-progress>
-      <div id="wrapper"
-           v-if="balance"> {{balance}} $</div>
+ 
 
       <img class="icon_jump"
            v-show="bct_jump_show"

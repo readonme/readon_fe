@@ -29,7 +29,7 @@
 }
 
 .news_botton {
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 .news_botton div {
@@ -45,6 +45,8 @@
   .news_botton a {
     float: left;
   }
+
+  
 }
 
 
@@ -52,11 +54,14 @@
   .hottopic-wapper-out{
     display: none;
   }
-}
+
 @media(max-width: 992px){
   .hottopic-wapper-slide{
-    display: none;
-  }
+    display: none; 
+}
+
+}
+
 }
 
 @-webkit-keyframes rotate {

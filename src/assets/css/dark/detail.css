@@ -53,10 +53,10 @@
 }
 
 .icon_jump {
-  width: 4em;
+  width: 8em;
   position: fixed;
   z-index: 15;
-  right: 2.5em;
+  right: 0;
   bottom: 7em;
 }
 
