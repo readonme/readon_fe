@@ -56,10 +56,11 @@
             <div class="section-content">
               <ul class="widget widget-hottopic">
                 <li v-for="item in hotTopicList">
-                  <div class="hottopic-title">#{{item.topicName}}</div>
+                  <div class="hottopic-image" :style='{backgroundImage:"url("+item.image+")",backgroundColor:item.color}'></div>
                   <div class="hottopic-info">
+                    <div class="hottopic-title">#{{item.displayName}}</div>
                     <span class="hottopic-perc"
-                          :style='{paddingRight:item.topicHotPercent}'></span>
+                          :style='{paddingRight:item.score+"%"}'></span>
                   </div>
                 </li>
               </ul>
@@ -132,10 +133,11 @@
               <div class="section-content">
                 <ul class="widget widget-hottopic">
                   <li v-for="item in hotTopicList">
-                    <div class="hottopic-title">#{{item.topicName}}</div>
+                    <div class="hottopic-image" :style='{backgroundImage:"url("+item.image+")",backgroundColor:item.color}'></div>
                     <div class="hottopic-info">
+                      <div class="hottopic-title">#{{item.displayName}}</div>
                       <span class="hottopic-perc"
-                            :style='{paddingRight:item.topicHotPercent}'></span>
+                            :style='{paddingRight:item.score+"%"}'></span>
                     </div>
                   </li>
                 </ul>
@@ -174,7 +176,7 @@
 import loading from "../components/loading.vue";
 
 import { formatTime } from "@/utils/common_tools";
-import { cateList, articleList, articleTopVoteList } from "@/api/article.js";
+import { cateList, articleList, articleTopVoteList,hotTopicsList } from "@/api/article.js";
 
 export default {
   name: "Home",
@@ -196,29 +198,32 @@ export default {
     this.toparticles = articleRes.data.data.slice(0, 4);
     this.loadingflag = false
 
+    let hotTopicListRes= await hotTopicsList();
+    console.log("hotTopicListRes",hotTopicListRes)
+    this.hotTopicList = hotTopicListRes.data.data  || [];
     //this is hot topic static data for test
-    this.hotTopicList = [{
-      topicName: 'Fassion',
-      topicHotPercent: "100%"
-    },
-    {
-      topicName: 'Sport',
-      topicHotPercent: "90%"
-    },
-    {
-      topicName: 'LifeStyle',
-      topicHotPercent: "80%"
-    },
-    {
-      topicName: 'Fun',
-      topicHotPercent: "70%"
-    },
-    {
+    // this.hotTopicList = [{
+    //   topicName: 'Fassion',
+    //   topicHotPercent: "100%"
+    // },
+    // {
+    //   topicName: 'Sport',
+    //   topicHotPercent: "90%"
+    // },
+    // {
+    //   topicName: 'LifeStyle',
+    //   topicHotPercent: "80%"
+    // },
+    // {
+    //   topicName: 'Fun',
+    //   topicHotPercent: "70%"
+    // },
+    // {
 
-      topicName: 'News',
-      topicHotPercent: "40%"
+    //   topicName: 'News',
+    //   topicHotPercent: "40%"
 
-    }]
+    // }]
   },
   data () {
     return {

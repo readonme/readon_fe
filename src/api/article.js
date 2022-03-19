@@ -30,6 +30,15 @@ export function articleTopVoteList(params) {
   })
 }
 
+//获取hot topic列表
+export function hotTopicsList() {
+  return request({
+    url: host + "/api_v2/topic/get_top?",
+    method: "get"
+  })
+}
+
+
 //获取文章列表
 export function articleList(params) {
   console.log(params)
