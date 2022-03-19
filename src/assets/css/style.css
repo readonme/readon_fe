@@ -3467,6 +3467,8 @@ ul {
 
 .media-post-wrap-2.media .thumb img {
   border-radius: 3px;
+  object-fit: cover;
+  width: 100%;
 }
 
 .media-post-wrap-2:hover {

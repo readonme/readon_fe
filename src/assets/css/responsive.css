@@ -6,6 +6,7 @@
 	.top-post-wrap .thumb img,
 	.single-post-wrap .thumb img {
 		width: 100%;
+		object-fit: cover;
 	}	
 	.video-area .top-post-wrap-2 .thumb,
 	.video-area .top-post-wrap-2 {
@@ -412,6 +413,7 @@
 	}
 	.single-post-wrap .thumb img {
 		width: 100%;
+		object-fit: cover;
 	}
 	.media-post-wrap {
 		align-items: center;

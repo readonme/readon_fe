@@ -39,6 +39,8 @@
 
 .voteimg {
   height: 10em;
+  object-fit: cover;
+  width: 100%;
 }
 
 @media (min-width: 600px) {
