@@ -110,7 +110,7 @@
                     <!-- <p class="story_content">{{ item.short_content }}</p> -->
                   </a>
                   <div class="news_botton">
-                    <a class="tag tag-red"
+                    <a class="tag tag-red" style="margin-top: 0.5em;"
                        href="#" v-if="item.cate">{{ item.cate.title }} </a>
                         <span v-if="item.topicInfo"
                       v-for="topic in item.topicInfo"> 
