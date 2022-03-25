@@ -13,13 +13,13 @@
                    animation="default 1000 100"
                    fontSize="1em">
         <img style="width: 5em"
-             :src="require(`@/assets/img/detail/${imgurl}`)" />
+             v-lazy="require(`@/assets/img/detail/${imgurl}`)" />
       </ve-progress>
  
 
       <img class="icon_jump"
            v-show="bct_jump_show"
-           :src="bct_jump_show?require('@/assets/img/detail/bct_jump.gif'):''"
+           v-lazy="bct_jump_show?require('@/assets/img/detail/bct_jump.gif'):''"
            alt="img" />
     </div>
 

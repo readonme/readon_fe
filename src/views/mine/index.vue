@@ -9,7 +9,7 @@
       <el-row>
         <el-col :span="4" v-for="item in avatars">
           <img
-            :src="item.url"
+            v-lazy="item.url"
             class="avatarimg"
             @click="submitAvatar(item.id, item.url)"
           />
@@ -22,7 +22,7 @@
         style="position: relative; width: 7em; height: 7em; margin: 0 auto"
         @click="selectAvatars"
       >
-        <img :src="userObj.headimgurl" border="2" class="myheadimg" /><i
+        <img v-lazy="userObj.headimgurl" border="2" class="myheadimg" /><i
           class="editicon fa fa-pencil-square-o"
           aria-hidden="true"
         ></i>

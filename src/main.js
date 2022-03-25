@@ -18,6 +18,9 @@ import veProgress from "vue-ellipse-progress";
 //socail share
 import VueSocialSharing from 'vue-social-sharing'
 
+//lazy loader
+import VueLazyload from 'vue3-lazyload'
+
 //wallet
 import {
   PhantomWalletAdapter,
@@ -52,6 +55,10 @@ const router = createRouter({
   routes,
 })
 
+// import Vue from "vue";
+// or with options
+const loadimage = require('./assets/img/readon_default_bg.png')
+const errorimage = require('./assets/img/readon_default_bg.png')
 
 
 
@@ -63,6 +70,9 @@ app.use(router)
 // app.use(ElementPlus)
 app.use(veProgress)
 app.use(VueSocialSharing)
+app.use(VueLazyload, {
+  loading: loadimage
+});
 app.mount('#app')
 
 

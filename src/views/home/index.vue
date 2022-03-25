@@ -19,7 +19,7 @@
                v-for="item in toparticles">
             <div class="single-post-wrap">
               <div class="thumb">
-                <img :src="item.coverImg"
+                <img v-lazy="item.coverImg"
                      alt="img"
                      class="voteimg" />
                 <a class="tag top-right tag-sky top_title"
@@ -91,7 +91,7 @@
                     align-self: center;
                     justify-content: center;
                   ">
-                  <img :src="item.coverImg"
+                  <img v-lazy="item.coverImg"
                        alt="img"
                        style="max-height: 11em;" />
                 </div>
@@ -156,7 +156,7 @@
               </div>
               <ul class="widget widget-categories">
                 <li v-for="item in cateObjList">
-                  <div class="thumb" v-if="item.memo"><img :src="item.memo.img"
+                  <div class="thumb" v-if="item.memo"><img v-lazy="item.memo.img"
                          alt="img" /></div>
                   <a :href="'#/category/' + item.id"
                      target="_blank">
