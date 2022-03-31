@@ -237,6 +237,7 @@ export default {
         var length = this.originWallet.length;
         this.showBal = true;
         this.isConnectWallet = true; 
+        TOKEN.setWallet(principal)
         var node = document.getElementsByClassName("swv-button")[0] || document.getElementsByClassName("swv-button")[0].children[1]
         node.innerHTML =
           this.originWallet.substring(0, 4) +

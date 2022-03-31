@@ -1,4 +1,7 @@
 /* common */
+/deep/ a:hover{
+  cursor:pointer   
+}
 .top_title {
   max-height: 3em;
   overflow: hidden;

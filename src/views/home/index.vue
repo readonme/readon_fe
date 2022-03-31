@@ -9,36 +9,39 @@
               <h4 class="title">Top Voted Stories</h4>
             </div>
             <div class="col-sm-4 text-sm-right align-self-center">
-              <a class="see-all-btn float-sm-end dark-see-all-btn"
-                 href="#">View all</a>
+              <a class="see-all-btn float-sm-end dark-see-all-btn" href="#"
+                >View all</a
+              >
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-3 col-md-6"
-               v-for="item in toparticles">
-            <div class="single-post-wrap">
-              <div class="thumb">
-                <img v-lazy="item.coverImg"
-                     alt="img"
-                     class="voteimg" />
-                <a class="tag top-right tag-sky top_title"
-                   href="#" v-if="item.cate">
-                   {{item.cate.title }}</a>
-              </div>
-              <div class="post-details">
-                <div class="meta">
-                  <div class="date">
-                    <i class="fa fa-clock-o" style="color: #7c7577;"></i>
-                    {{ formatTime(item.createdAt) }}
-                  </div>
+          <div class="col-lg-3 col-md-6" v-for="item in toparticles">
+            <a :href="'#/detail/' + item.id" target="_blank">
+              <div class="single-post-wrap">
+                <div class="thumb">
+                  <img v-lazy="item.coverImg" alt="img" class="voteimg" />
+                  <a
+                    class="tag top-right tag-sky top_title"
+                    href="#"
+                    v-if="item.cate"
+                  >
+                    {{ item.cate.title }}</a
+                  >
                 </div>
-                <h6 class="top_title">
-                  <a :href="'#/detail/' + item.id"
-                     target="_blank">{{ item.title }}</a>
-                </h6>
+                <div class="post-details">
+                  <div class="meta">
+                    <div class="date">
+                      <i class="fa fa-clock-o" style="color: #7c7577"></i>
+                      {{ formatTime(item.createdAt) }}
+                    </div>
+                  </div>
+                  <h6 class="top_title">
+                    {{ item.title }}
+                  </h6>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -53,17 +56,24 @@
             <div class="section-content">
               <ul class="widget widget-hottopic">
                 <li v-for="item in hotTopicList">
-                  <div class="hottopic-image" :style='{backgroundImage:"url("+item.image+")",backgroundColor:item.color}'></div>
+                  <div
+                    class="hottopic-image"
+                    :style="{
+                      backgroundImage: 'url(' + item.image + ')',
+                      backgroundColor: item.color,
+                    }"
+                  ></div>
                   <div class="hottopic-info">
-                    <div class="hottopic-title">#{{item.displayName}}</div>
-                    <span class="hottopic-perc"
-                          :style='{paddingRight:item.score+"%"}'></span>
+                    <div class="hottopic-title">#{{ item.displayName }}</div>
+                    <span
+                      class="hottopic-perc"
+                      :style="{ paddingRight: item.score + '%' }"
+                    ></span>
                   </div>
                 </li>
               </ul>
               <div class="my-hottopic-btn">
-                <a class="see-all-btn dark-see-all-btn"
-                   href="#">My Topic</a>
+                <a class="see-all-btn dark-see-all-btn" href="#">My Topic</a>
               </div>
             </div>
           </section>
@@ -71,32 +81,39 @@
       </div>
     </div>
     <!-- news-area Start -->
-    <div class="pd-top-50 pd-bottom-30"
-         id="articlesFeed">
+    <div class="pd-top-50 pd-bottom-30" id="articlesFeed">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
             <div class="section-title">
               <h4 class="title">Stories</h4>
             </div>
-            <div v-infinite-scroll="loadMore"
-                 infinite-scroll-disabled="loading"
-                 infinite-scroll-distance="5"
-                 class="list">
-              <div class="media-post-wrap-2 media dark-media"
-                   v-for="item in articles">
-                <div class="thumb"
-                     style="
+            <div
+              v-infinite-scroll="loadMore"
+              infinite-scroll-disabled="loading"
+              infinite-scroll-distance="5"
+              class="list"
+            >
+              <div
+                class="media-post-wrap-2 media dark-media"
+                v-for="item in articles"
+              >
+                <a
+                  :href="'#/detail/' + item.id"
+                  target="_blank"
+                  class="thumb"
+                  style="
                     width: 20em;
                     align-self: center;
                     justify-content: center;
-                  ">
-                  <img v-lazy="item.coverImg"
-                       alt="img"
-                       style="max-height: 11em;" />
-                </div>
-                <div class="media-body"
-                     style="margin-top: 2px">
+                  "
+                >
+                  <img
+                    v-lazy="item.coverImg"
+                    alt="img"
+                    style="max-height: 11em"
+                /></a>
+                <div class="media-body" style="margin-top: 2px">
                   <div class="meta d-block mt-3">
                     <div class="date">
                       <i class="fa fa-clock-o"></i>
@@ -105,25 +122,36 @@
                       {{ item.author }}
                     </div>
                   </div>
-                  <a :href="'#/detail/' + item.id"
-                     target="_blank">
+                  <a :href="'#/detail/' + item.id" target="_blank">
                     <h6 class="story_title">{{ item.title }}</h6>
                     <!-- <p class="story_content">{{ item.short_content }}</p> -->
                   </a>
                   <div class="news_botton">
-                    <a class="tag tag-red" style="margin-top: 0.5em;margin-right:0.5em;"
-                       href="#" v-if="item.cate">{{ item.cate.title }} </a>
-                        <span v-if="item.topicInfo"
-                      v-for="topic in item.topicInfo"> 
-
-                     <span class="tag topictag" :style="{marginTop:'0.5em',marginRight:'0.5em',background:topic.color}">{{ topic.displayName }} </span>
-                     </span>
+                    <a
+                      class="tag tag-red"
+                      style="margin-top: 0.5em; margin-right: 0.5em"
+                      href="#"
+                      v-if="item.cate"
+                      >{{ item.cate.title }}
+                    </a>
+                    <span v-if="item.topicInfo" v-for="topic in item.topicInfo">
+                      <span
+                        class="tag topictag"
+                        :style="{
+                          marginTop: '0.5em',
+                          marginRight: '0.5em',
+                          background: topic.color,
+                        }"
+                        >{{ topic.displayName }}
+                      </span>
+                    </span>
                   </div>
                 </div>
               </div>
               <div class="btn-wrap mt-5 mb-5 text-center">
-                <a class="btn btn-main"
-                   style="color: rgba(1, 237, 255, 1);">{{ loadMsg }}</a>
+                <a class="btn btn-main" style="color: rgba(1, 237, 255, 1)">{{
+                  loadMsg
+                }}</a>
               </div>
             </div>
           </div>
@@ -135,20 +163,26 @@
               <div class="section-content">
                 <ul class="widget widget-hottopic">
                   <li v-for="item in hotTopicList">
-                    <div class="hottopic-image" :style='{backgroundImage:"url("+item.image+")",backgroundColor:item.color}'></div>
+                    <div
+                      class="hottopic-image"
+                      :style="{
+                        backgroundImage: 'url(' + item.image + ')',
+                        backgroundColor: item.color,
+                      }"
+                    ></div>
                     <div class="hottopic-info">
-                      <div class="hottopic-title">#{{item.displayName}}</div>
-                      <span class="hottopic-perc"
-                            :style='{paddingRight:item.score+"%"}'></span>
+                      <div class="hottopic-title">#{{ item.displayName }}</div>
+                      <span
+                        class="hottopic-perc"
+                        :style="{ paddingRight: item.score + '%' }"
+                      ></span>
                     </div>
                   </li>
                 </ul>
                 <div class="my-hottopic-btn">
-                  <a class="see-all-btn dark-see-all-btn"
-                     href="#">My Topic</a>
+                  <a class="see-all-btn dark-see-all-btn" href="#">My Topic</a>
                 </div>
               </div>
-
             </section>
             <section class="categories-wapper">
               <div class="section-title">
@@ -156,16 +190,15 @@
               </div>
               <ul class="widget widget-categories">
                 <li v-for="item in cateObjList">
-                  <div class="thumb" v-if="item.memo"><img v-lazy="item.memo.img"
-                         alt="img" /></div>
-                  <a :href="'#/category/' + item.id"
-                     target="_blank">
-                    {{item.title}}
+                  <div class="thumb" v-if="item.memo">
+                    <img v-lazy="item.memo.img" alt="img" />
+                  </div>
+                  <a :href="'#/category/' + item.id" target="_blank">
+                    {{ item.title }}
                   </a>
                 </li>
               </ul>
             </section>
-
           </div>
         </div>
       </div>
@@ -174,35 +207,40 @@
     <!-- news-area End -->
   </div>
 </template>
-<script> 
+<script>
 import loading from "../components/loading.vue";
 
 import { formatTime } from "@/utils/common_tools";
-import { cateList, articleList, articleTopVoteList,hotTopicsList } from "@/api/article.js";
+import {
+  cateList,
+  articleList,
+  articleTopVoteList,
+  hotTopicsList,
+} from "@/api/article.js";
 
 export default {
   name: "Home",
   components: {
-    loading
+    loading,
   },
-  async created () {
-    var params = { "page": 1 }
-    this.cid = this.$route.params.cid
+  async created() {
+    var params = { page: 1 };
+    this.cid = this.$route.params.cid;
     if (this.cid == undefined) {
-      console.log('cid is null')
+      console.log("cid is null");
     } else {
-      params["cid"] = this.cid
+      params["cid"] = this.cid;
     }
 
     let cateRes = await cateList();
     this.cateObjList = cateRes.data.data;
     let articleRes = await articleTopVoteList(params);
     this.toparticles = articleRes.data.data.slice(0, 4);
-    this.loadingflag = false
+    this.loadingflag = false;
 
-    let hotTopicListRes= await hotTopicsList();
-    console.log("hotTopicListRes",hotTopicListRes)
-    this.hotTopicList = hotTopicListRes.data.data  || [];
+    let hotTopicListRes = await hotTopicsList();
+    console.log("hotTopicListRes", hotTopicListRes);
+    this.hotTopicList = hotTopicListRes.data.data || [];
     //this is hot topic static data for test
     // this.hotTopicList = [{
     //   topicName: 'Fassion',
@@ -227,7 +265,7 @@ export default {
 
     // }]
   },
-  data () {
+  data() {
     return {
       toparticles: [],
       articles: [],
@@ -241,14 +279,14 @@ export default {
   },
 
   methods: {
-    loadMore () {
+    loadMore() {
       this.requestData();
     },
-    async requestData () {
-      try { 
+    async requestData() {
+      try {
         this.loading = true;
-        let articleRes2 = await articleList({ "page": this.page, "cid": this.cid });
-        console.log("articleRes2",articleRes2)
+        let articleRes2 = await articleList({ page: this.page, cid: this.cid });
+        console.log("articleRes2", articleRes2);
         if (articleRes2.data && articleRes2.data.code == 0) {
           let tmp = articleRes2.data.data.items;
           this.articles = this.articles.concat(tmp);
@@ -265,9 +303,9 @@ export default {
       } finally {
       }
     },
-    formatTime (time) {
-      return formatTime(time)
-    }
+    formatTime(time) {
+      return formatTime(time);
+    },
   },
 };
 </script> 
