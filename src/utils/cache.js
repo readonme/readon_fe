@@ -50,9 +50,6 @@ var cache = {
       cache.remove(key);
       return null;
     }
-
-
-
   },
   /**
    *  移除键
@@ -71,17 +68,14 @@ var cache = {
   "expired": function (key, expiredTimeMS) {
     if (cache.get(key) != null) {
       localStorage.setItem(key + cache.key.expiredTime, expiredTimeMS);
-    }
-
+    } 
   },
   /**
    * 清除所有缓存
    */
   "clear": function () {
     localStorage.clear();
-  }
-
+  } 
 }
-
-
+  
 export default cache;
