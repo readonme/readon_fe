@@ -3,7 +3,7 @@ const VUE_APP_TOKEN_NAME = "READTOKEN";
 const VUE_APP_WALLET_NAME = "READWALLET";
 
 function setToken (value) {
-  cache.set(VUE_APP_TOKEN_NAME, value, 3600 * 1000 * 30)
+  cache.set(VUE_APP_TOKEN_NAME, value, 3600 * 1000 *24 * 30)
 }
 
 function getToken () {
@@ -11,7 +11,7 @@ function getToken () {
 }
 
 function setWallet (value) {
-  cache.set(VUE_APP_WALLET_NAME, value, 3600 * 1000 * 30)
+  cache.set(VUE_APP_WALLET_NAME, value, 3600 * 1000 * 24 * 30)
 }
 
 function getWallet () {
