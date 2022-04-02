@@ -5,7 +5,7 @@
     <span class="overview"
           v-show="!islogin"><a href="/#/login">Log in</a></span>
 
-    <span class="title market"><a href="http://market.readon.me/"
+    <span class="title market"><a href="http://market.readon.me/#/?network=devnet"
          target=_black>Marketplace</a></span>
 
     <el-dropdown>
