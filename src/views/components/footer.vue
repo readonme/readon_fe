@@ -13,8 +13,9 @@
                  src="@/assets/img/footer/discord.png"></a>
           <img class="b-title"
                src="@/assets/img/footer/telegram.png">
-          <img class="b-title"
-               src="@/assets/img/footer/medium.png">
+           <a href="https://readonofficial.medium.com/" target="_blank">
+           <img class="b-title"
+               src="@/assets/img/footer/medium.png"></a>
         </div>
 
         <div class="line_02"></div>
